@@ -3,5 +3,6 @@
 
 scheme-medium
 authblk
+tcolorbox
 tikz-cd
 latexmk

@@ -5,4 +5,5 @@ scheme-medium
 authblk
 tcolorbox
 tikz-cd
+tikzfill
 latexmk

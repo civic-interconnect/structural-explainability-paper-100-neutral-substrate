@@ -16,6 +16,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6 # OBS: v6 current as of Dec 2025
 
+      # WHY: Install TeX Live in CI in a maintainable way
+      # OBS: This action installs tlmgr, but does not install TeX packages unless specified
+      - name: Setup TeX Live
+        uses: TeX-Live/setup-texlive-action@v3
+        with:
+          package-file: .github/tl_packages
+          cache: true
+
+      - name: Confirm TeX binaries available
+        run: |
+          set -e
+          kpsewhich authblk.sty
+          which pdflatex
+          pdflatex --version
+          which latexmk
+          latexmk --version
+
       # WHY: Create clean staging area with only files arXiv needs
       - name: Create staging directory
         run: |
@@ -61,3 +78,14 @@ jobs:
           name: arxiv-source
           path: arxiv-source.zip
           if-no-files-found: error # WHY: Fail if packaging didn't work
+
+      # WHY: Provide a compiled PDF for manual verification before arXiv submission
+      # OBS: This PDF is NOT included in the arXiv source zip
+      # OBS: Allows manual confirmation that the staged bundle compiles as expected
+      - name: Upload compiled PDF (CI check)
+        uses: actions/upload-artifact@v6 # OBS: v6 current as of Dec 2025
+        with:
+          name: compiled-pdf
+          path: arxiv_src/artifacts/se100_the_ontological_neutrality_theorem.pdf
+          retention-days: 7
+          if-no-files-found: error

@@ -1,0 +1,5 @@
+# WHY: TeX Live packages/schemes required for CI builds
+# OBS: Schemes are allowed; this file is read by TeX-Live/setup-texlive-action
+
+scheme-medium
+latexmk

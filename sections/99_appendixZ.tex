@@ -1,0 +1,74 @@
+% !TeX root = se100_the_ontological_neutrality_theorem.tex
+
+\clearpage
+\section*{Appendix B. Requirement--Discharge Trace (P0)}
+\addcontentsline{toc}{section}{Appendix B. Requirement--Discharge Trace (P0)}
+
+% Mechanical traceability matrix. No new claims.
+\begingroup
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+
+
+\subsection*{B.1 Global Proof Contract Requirements}
+\begin{tabular}{p{0.13\linewidth} p{0.50\linewidth} p{0.15\linewidth} p{0.15\linewidth} p{0.05\linewidth}}
+  \textbf{REQ ID} & \textbf{Requirement}                                                                                                  & \textbf{Introduced} & \textbf{Discharged}                             & \textbf{OK} \\
+  \hline
+  PROOF           & All claims MUST follow from explicit definitions, stated assumptions, and logical inference.                          & Contract            & \ref{sec:requirements}, \ref{sec:impossibility} & Yes         \\
+  WELL-FORMED     & All formal objects MUST be admissible and well-formed with respect to the assumed ontology and substrate constraints. & Contract            & \ref{sec:requirements}, \ref{sec:impossibility} & Yes         \\
+  PC              & The substrate MUST be pre-causal.                                                                                     & Contract            & \ref{sec:requirements}, \ref{sec:impossibility} & Yes         \\
+  NEUTRAL         & The substrate MUST not encode normative, evaluative, or policy judgments.                                             & Contract            & \ref{sec:requirements}, \ref{sec:impossibility} & Yes         \\
+  ID-INVAR        & Entity existence and identity conditions MUST be invariant across admissible frameworks within the domain.            & Contract            & \ref{sec:requirements}, \ref{sec:impossibility} & Yes         \\
+  ID              & Entity identity MUST be established prior to explanation or interpretation.                                           & Contract            & \ref{sec:requirements}                          & Yes         \\
+  MINIMAL         & Substrate MUST include only entities and relations necessary for accountability analysis, and no more.                & Contract            & \ref{sec:implications}                          & Yes         \\
+  SCOPE-GUARD     & Paper MUST NOT argue all ontologies should be neutral; only that neutral substrates have categorical constraints.     & Contract            & \ref{sec:requirements}                          & Yes         \\
+  DEP             & Direction of dependence MUST be: Identity precedes explanation; explanation precedes interpretation.                  & Contract            & \ref{sec:requirements}, \ref{sec:impossibility} & Yes         \\
+\end{tabular}
+
+
+\subsection*{B.2 Neutrality Requirements (Section~\ref{sec:requirements})}
+\begin{tabular}{p{0.12\linewidth} p{0.40\linewidth} p{0.15\linewidth} p{0.15\linewidth} p{0.05\linewidth}}
+  \textbf{REQ ID} & \textbf{Requirement}                                                                   & \textbf{Derives From} & \textbf{Discharged By}       & \textbf{OK} \\
+  \hline
+  INC             & Substrate MUST exclude causal and normative observables from its Level of Abstraction. & PC, NEUTRAL           & \ref{subsec:interpretive-nc} & Yes         \\
+  EXT             & Substrate MUST remain stable under extension by incompatible interpretive frameworks.  & DEP                   & \ref{subsec:extension}       & Yes         \\
+\end{tabular}
+
+\noindent\textbf{Handoff:} \OBS{REQ-TO-IMP}{Section~\ref{sec:requirements} defines neutrality
+  such that violating pre-causality or pre-normativity entails failure of extension stability,
+  enabling the impossibility argument in Section~\ref{sec:impossibility}.}
+
+
+\subsection*{B.3 Impossibility Discharge (Section~\ref{sec:impossibility})}
+\begin{tabular}{p{0.55\linewidth} p{0.33\linewidth} p{0.07\linewidth}}
+  \textbf{Claim / Obligation}                                         & \textbf{Discharged By}    & \textbf{OK} \\
+  \hline
+  INC/EXT incompatible with normative commitments                     & \ref{subsec:normative}    & Yes         \\
+  INC/EXT incompatible with causal commitments                        & \ref{subsec:causal}       & Yes         \\
+  Reification does not provide a middle ground (boundary only)        & \ref{subsec:reification}  & Yes         \\
+  Formal contradiction from requirements to impossibility proposition & \ref{subsec:formal-proof} & Yes         \\
+\end{tabular}
+
+
+\subsection*{B.4 Derived Design Constraints (Section~\ref{sec:implications})}
+\begin{tabular}{p{0.38\linewidth} p{0.50\linewidth} p{0.07\linewidth}}
+  \textbf{Derived Constraint}                                                           & \textbf{Derived From}                                                          & \textbf{OK} \\
+  \hline
+  Exclude causal, normative, evaluative conclusions from substrate assertions           & INC + EXT (\ref{sec:requirements}) and contradiction (\ref{sec:impossibility}) & Yes         \\
+  Provide entity reference, identity criteria, disjointness, and persistence conditions & ID (Contract) + LoA restriction (\ref{sec:requirements})                       & Yes         \\
+  Externalize interpretation to higher LoO layers                                       & DEP (Contract) + stability requirement (\ref{sec:requirements})                & Yes         \\
+  Maintain monotonicity under incompatible extensions                                   & EXT (\ref{sec:requirements}) + impossibility (\ref{sec:impossibility})         & Yes         \\
+  Use reification only as boundary mechanism (no endorsement)                           & \ref{subsec:reification} + INC/EXT framing                                     & Yes         \\
+\end{tabular}
+
+\subsection*{B.5 Integrity Check (Mechanical)}
+\begin{tabular}{p{0.65\linewidth} p{0.30\linewidth}}
+  \textbf{Check}                                                    & \textbf{Result}  \\
+  \hline
+  REQ introduced outside Contract or Section~\ref{sec:requirements} & None             \\
+  REQ without discharge path                                        & None             \\
+  Annotated claims in Intro/Related/Conclusion                      & None (by design) \\
+\end{tabular}
+
+\endgroup

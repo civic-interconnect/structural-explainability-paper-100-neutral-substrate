@@ -1,0 +1,47 @@
+// WHY: Workspace-specific settings for consistent editing experience
+// OBS: Auto-save reduces loss of work; formatting is intentionally not automated for proof-based LaTeX
+// ALT: Users can override in their personal settings if needed
+{
+  // OBS: Editor settings - apply to all file types
+  "editor.formatOnSave": false, // WHY: Avoid auto-formatting in proof-based LaTeX repos
+
+  // OBS: File handling - auto-save and performance
+  "files.autoSave": "onFocusChange", // WHY: Auto-save prevents losing work
+  "files.autoSaveDelay": 1000,
+  "files.watcherExclude": {
+    // WHY: Exclude build directories from file watcher
+    "**/build/**": true,
+    "**/build_annotated/**": true,
+    "**/.venv/**": true,
+    "**/__pycache__/**": true
+  },
+
+  // OBS: GitHub Actions - workflow validation
+  "github-actions.workflows.pinned.workflows": [
+    ".github/workflows/arxiv-prep.yml",
+    ".github/workflows/build-latex.yml",
+    ".github/workflows/links.yml"
+  ],
+
+  // REQ: LaTeX Workshop - required for this repo
+  "latex-workshop.latex.autoBuild.run": "onFileChange", // WHY: Compile as files change for quick feedback
+
+  // WHY: Ensure LaTeX Workshop discovers the repository bibliography
+  // OBS: Bibliography lives at repo root
+  "latex-workshop.latex.bibDirs": ["."],
+
+  // WHY: Keep build artifacts separate and predictable
+  "latex-workshop.latex.outDir": "./build",
+
+  // WHY: Use latexindent from MiKTeX installation
+  "latex-workshop.formatting.latexindent.path": "C:/Users/edaci/AppData/Local/Programs/MiKTeX/miktex/bin/x64/latexindent.exe",
+
+  // WHY: Enable PDF <-> source navigation
+  "latex-workshop.synctex.afterBuild.enabled": true,
+
+  // WHY: View PDF in VS Code tab
+  "latex-workshop.view.pdf.viewer": "tab",
+
+  // OBS: YAML formatting - for workflows and configs
+  "yaml.format.enable": true
+}

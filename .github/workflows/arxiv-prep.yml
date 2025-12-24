@@ -1,0 +1,63 @@
+# WHY: Prepares clean source package for arXiv submission
+# OBS: Removes build artifacts and CI files that arXiv doesn't need
+# REQ: Create account on arxiv.org and start a paper submission before using this
+# ALT: Manual trigger only, use as needed to publish new versions on arXiv
+
+name: Prepare arXiv Source
+
+on:
+  workflow_dispatch: # WHY: Manual trigger only
+
+jobs:
+  arxiv-source:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6 # OBS: v6 current as of Dec 2025
+
+      # WHY: Create clean staging area with only files arXiv needs
+      - name: Create staging directory
+        run: |
+          mkdir -p arxiv_src
+
+          # WHY: Copy main tex file
+          cp se100_the_ontological_neutrality_theorem.tex arxiv_src/
+
+          # WHY: Copy content directories
+          cp -r sections arxiv_src/
+          cp -r glossary arxiv_src/
+          cp -r bibliography arxiv_src/
+
+          # WHY: Include .bbl if present to reduce arXiv bibliography failures
+          # OBS: This is a no-op if file does not exist
+          if [ -f se100_the_ontological_neutrality_theorem.bbl ]; then
+            cp se100_the_ontological_neutrality_theorem.bbl arxiv_src/
+          fi
+
+      # WHY: arXiv builds from source - doesn't need build artifacts
+      - name: Clean auxiliary files
+        working-directory: arxiv_src
+        run: |
+          # WHY: Remove LaTeX auxiliary files from local builds
+          # OBS: Keep .bbl if present (do not remove) so arXiv build is deterministic
+          find . -type f \( \
+            -name "*.aux" -o -name "*.log"  -o -name "*.out"  -o -name "*.toc" -o \
+            -name "*.bcf"  -o -name "*.blg"  -o -name "*.run.xml" -o \
+            -name "*.fls" -o -name "*.fdb_latexmk" -o -name "*.synctex.gz" \
+          \) -delete
+
+      # WHY: arXiv requires submission as zip file
+      - name: Create arXiv source zip
+        run: |
+          cd arxiv_src
+          zip -r ../arxiv-source.zip .
+
+      # WHY: Download this artifact to upload to arxiv.org
+      # OBS: Artifact available for download from Actions tab after workflow runs
+      - name: Upload arXiv source artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: arxiv-source
+          path: arxiv-source.zip
+          if-no-files-found: error # WHY: Fail if packaging didn't work

@@ -1,0 +1,100 @@
+# REQ.UNIVERSAL: All professional GitHub project repositories MUST include .gitignore.
+# WHY: Prevent committing generated artifacts, local state, secrets, and OS-specific files.
+# ALT: Repository may customize ignores, but MUST preserve universal safety rules.
+# CUSTOM: Add repo-specific patterns in the dedicated section at the bottom.
+
+# === Universal (all projects, all languages) ===
+
+# WHY: Logs can be useful during local debugging but are machine-local artifacts.
+# ALT: Remove this ignore temporarily if logs must be inspected.
+*.log
+logs/
+
+# WHY: Temporary, backup, and swap files are machine-local noise.
+*.swo
+*.swp
+*.tmp
+*~
+*.bak
+*.backup
+
+# WHY: Generic caches are machine-local and should not be tracked.
+.cache/
+
+# WHY: OS-generated metadata files should never be tracked.
+$RECYCLE.BIN/
+.AppleDouble
+.DS_Store
+.LSOverride
+.Spotlight-V100/
+.Trashes
+._*
+Icon\r
+desktop.ini
+Desktop.ini
+ehthumbs.db
+Thumbs.db
+
+# WHY: IDE/editor metadata is machine-local and should not be tracked.
+.idea/
+*.code-workspace
+.history/
+
+# === VS Code (special case) ===
+
+# WHY: Ignore editor state while allowing a shared baseline configuration.
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+# ALT: Commit .vscode/tasks.json only if tasks are essential to the workflow.
+# !.vscode/tasks.json
+
+# === Environment variables and secrets ===
+
+# WHY: Never commit credentials or environment-specific configuration.
+.env
+.env.*
+*.env
+
+# === Documentation / site build output ===
+
+# WHY: Static site build output is generated.
+site/
+
+# === LaTeX papers ===
+
+# WHY: LaTeX build artifacts - regenerated on each compile
+*.aux              # Cross-references
+*.bbl              # Bibliography
+*.bcf              # Biblatex control
+*.blg              # Bibliography log
+*.fdb_latexmk      # latexmk database
+*.fls              # File list
+*.lol              # List of listings
+*.log              # Compilation log
+*.nav              # Beamer navigation
+*.out              # PDF bookmarks
+*.run.xml          # Biblatex run
+*.snm              # Beamer notes
+*.synctex.gz       # Editor sync data
+*.toc              # Table of contents
+*.vrb              # Beamer verbatim
+*.xml              # Biblatex metadata
+.latexmkrc         # latexmk configuration
+
+# WHY: Build directory and intermediate PDFs
+build/
+build_annotated/
+*.pdf
+
+# WHY: Reference PDFs - available elsewhere, not redistributed here
+# OBS: Helps locate sources without republishing copyrighted material
+# CUSTOM: Update paths if reference locations change
+references/
+
+# WHY: Personal notes and scratch work not intended for publication
+NOTES.md
+
+# === Project-Specific ===
+# WHY: Include key PDF in the repository root
+!se100_the_ontological_neutrality_theorem.pdf

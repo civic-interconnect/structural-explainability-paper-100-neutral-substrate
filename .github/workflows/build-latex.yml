@@ -1,0 +1,55 @@
+# WHY: Automatically builds LaTeX PDF when paper changes
+# ALT: Manual trigger available via workflow_dispatch
+
+name: Build LaTeX PDF
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "sections/**"
+      - "bibliography/**"
+      - "glossary/**"
+      - "*.tex"
+      - ".github/workflows/build-latex.yml"
+      - ".github/tl_packages"
+
+  pull_request:
+    branches: [main]
+    paths:
+      - "sections/**"
+      - "bibliography/**"
+      - "glossary/**"
+      - "*.tex"
+      - ".github/workflows/build-latex.yml"
+      - ".github/tl_packages"
+
+  workflow_dispatch:
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6 # OBS: v6 current as of Dec 2025
+
+      # WHY: Install TeX Live in CI in a maintainable way
+      # OBS: This action installs tlmgr, but does not install TeX packages unless specified
+      - name: Setup TeX Live
+        uses: TeX-Live/setup-texlive-action@v3
+        with:
+          # WHY: At minimum, install a scheme so pdflatex/latexmk exist
+          # OBS: scheme-basic is the recommended minimum in the action docs
+          # ALT: Use scheme-medium if you want fewer missing .sty surprises
+          package-file: .github/tl_packages
+          cache: true
+
+      # WHY: Validate LaTeX compiles without errors so ready for arXiv prep
+      # OBS: PDF is built but not saved as artifact
+      - name: Build PDF to validate LaTeX
+        run: |
+          mkdir -p artifacts
+          latexmk -pdf -bibtex -interaction=nonstopmode -halt-on-error \
+            -auxdir=artifacts -outdir=artifacts \
+            se100_the_ontological_neutrality_theorem.tex

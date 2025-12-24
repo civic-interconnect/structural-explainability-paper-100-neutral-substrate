@@ -1,0 +1,257 @@
+% !TeX root = se100_the_ontological_neutrality_theorem.tex
+
+\section{Related Work}
+\label{sec:related}
+
+The constraints developed in this paper intersect with several lines of prior work:
+upper ontologies in formal ontology research,
+domain ontologies for legal and institutional reasoning,
+and causal modeling frameworks.
+This section situates the present contribution
+relative to each, clarifying both debts and departures.
+
+\subsection{Political Philosophy: Reasonable Pluralism}
+
+The premise that disagreement is structural rather than resolvable
+draws on Rawls' concept of reasonable pluralism~\cite{rawls1993political}.
+Rawls argues that under conditions of free inquiry,
+reasonable persons will arrive at incompatible comprehensive doctrines.
+
+This paper transposes that insight to ontology design:
+if interpretive disagreement is a permanent feature of accountability contexts,
+then neutral substrates must accommodate it structurally
+rather than resolving it by fiat.
+The impossibility result formalizes this accommodation
+as a constraint on admissible observables.
+Rawls' argument is not imported as a normative foundation,
+but as an analogy for the persistence of disagreement
+that motivates the need for structural accommodation.
+
+\subsection{Upper Ontologies: BFO and DOLCE}
+
+The Basic Formal Ontology
+(BFO)~\cite{iso2021bfo,arp2015bfo} and
+the Descriptive Ontology for Linguistic and Cognitive Engineering
+(DOLCE)~\cite{borgo2022dolce,masolo2003dolce}
+represent two influential approaches to foundational ontology design.
+Both aim to provide domain-independent upper-level categories
+that can be extended for specific applications.
+A recent special issue~\cite{borgo2022foundational} provides systematic
+comparison of seven foundational ontologies
+(BFO, DOLCE, GFO, GUM, TUpper, UFO, YAMATO)
+through common modeling cases,
+illustrating both their shared commitments
+and divergent design choices.
+
+BFO distinguishes continuants from occurrents
+and provides a realist framework grounded in scientific practice.
+DOLCE takes a more cognitive and linguistic orientation,
+emphasizing the role of conceptualization in ontological commitment.
+Both have been widely adopted in biomedical, engineering,
+and information systems contexts.
+
+The present work addresses a different question:
+it analyzes the logical consequences
+of embedding interpretive commitments at the substrate level,
+rather than the adequacy or intent
+of any particular foundational ontology.
+BFO and DOLCE provide categorical structure for what exists;
+they do not explicitly address the conditions under which
+an ontology can remain neutral across interpretive disagreement.
+These frameworks are often extended in practice
+to include causal and normative relations
+as first-class ontological commitments.
+The impossibility result established here
+implies that such extensions, if embedded at the substrate layer,
+compromise neutrality in the sense required for accountability systems.
+
+In Floridi's terms, while BFO and DOLCE define
+the Level of Organization for physical and social reality,
+they do not mandate a specific Level of Abstraction
+that excludes interpretive predicates.
+Our contribution is to show that for the
+specific purpose of neutrality,
+such a mandate is a logical necessity.
+
+Guarino's analysis of ontological commitment~\cite{guarino2009ontology}
+clarifies what it means for an ontology to assert something;
+the present contribution identifies which such assertions
+are incompatible with neutrality.
+
+This paper's constraints are therefore compatible
+with BFO or DOLCE
+as upper-level scaffolding,
+provided that causal and normative commitments are externalized
+to interpretive layers rather than embedded in the foundational substrate.
+Recent work on formal alignment between BFO and DOLCE~\cite{masolo2025alignment}
+demonstrates that even foundational ontologies with divergent commitments
+can be mapped systematically,
+reinforcing the feasibility of neutral substrates
+that support multiple interpretive frameworks.
+
+Whether specific versions or extensions of BFO, DOLCE,
+or other upper ontologies satisfy these constraints in practice
+is an empirical question beyond the scope of this paper.
+Such compatibility assessments require detailed analysis
+of particular ontology versions and their commitments,
+work that would benefit from collaboration with the communities
+that maintain and extend these frameworks.
+
+
+\subsection{Legal Ontologies: LKIF and Related Approaches}
+
+Legal ontologies, such as the Legal Knowledge Interchange Format
+(LKIF)~\cite{hoekstra2007lkif},
+and related frameworks~\cite{sartor2011legal,breuker2009owl}
+aim to represent legal concepts, norms, and reasoning patterns
+in machine-processable form.
+These ontologies typically include deontic categories, such as obligation,
+permission, and prohibition, as core primitives,
+along with relations for legal causation, responsibility, and compliance.
+
+Such frameworks are valuable for legal reasoning and case analysis
+within a fixed normative framework.
+However, they are not designed to function as neutral substrates
+across incompatible legal or political interpretations.
+By embedding deontic conclusions as ontological facts at the foundational layer,
+they necessarily privilege one normative stance over others.
+When legal interpretations diverge,
+as they routinely do across jurisdictions, over time,
+or under political contestation,
+the substrate itself must be revised
+to accommodate disagreement.
+
+The impossibility result in this paper
+applies directly to such designs.
+LKIF and similar ontologies are appropriate for
+interpretive layers built atop a neutral substrate,
+but they cannot themselves serve as the substrate
+if neutrality across disagreement is required.
+
+\subsection{Causal Modeling: Pearl and Structural Approaches}
+
+The structural causal modeling framework developed by Pearl~\cite{pearl2009causality}
+and extended by others~\cite{woodward2003making,spirtes2000causation}
+provides rigorous tools for representing and reasoning about causation.
+The do-calculus and related interventionist semantics
+have become standard in causal inference across multiple disciplines.
+
+These frameworks make explicit causal commitments:
+they assert that certain variables cause others
+under specified structural assumptions.
+Such commitments are essential for causal reasoning
+but are inherently model-dependent.
+Different causal models, each internally consistent,
+may disagree about which relations are causal,
+which variables are confounders,
+and which interventions produce which effects.
+
+The present work does not dispute the value of causal modeling
+for explanation and decision-making.
+Rather, it observes that causal conclusions are framework-relative
+in the same structural sense as normative conclusions.
+Embedding causal relations as substrate-layer primitives
+privileges one model over others,
+violating interpretive non-commitment.
+Causal reasoning must therefore be externalized
+to interpretive layers where model assumptions are explicit
+and disagreement can be represented without substrate revision.
+
+\subsection{Philosophy of Information: Levels of Abstraction}
+
+The methodological framework of this paper is informed by Floridi's
+Philosophy of Information~\cite{floridi2008levels,floridi2011philosophy}.
+Floridi introduces the Method of Levels of Abstraction (LoA) as a way to
+specify the epistemic range of a system through a set of observables.
+Crucially, Floridi distinguishes between
+the LoA (the lens through which a system is viewed) and
+the Level of Organization (LoO), which refers to
+the internal structural hierarchy of the system itself.
+
+While Floridi uses these concepts
+to analyze the nature of data and knowledge, this paper applies
+them specifically to the problem of ontological neutrality.
+We argue that neutrality is a function of
+operating at a foundational LoO
+with a deliberately restricted LoA.
+This paper extends Floridi's work by proving
+that certain classes of observables, causal and normative,
+necessarily introduce interpretive entropy that
+renders an LoA unstable with respect to extensions.
+
+\subsection{Information Infrastructure: Boundary Objects}
+
+Star and Griesemer's concept of
+boundary objects~\cite{star1989institutional,star1996ecology}
+and subsequent work on classification systems~\cite{bowker1999sorting}
+address how representations can be shared across communities
+with divergent interpretive frameworks.
+Boundary objects are plastic enough to adapt to local needs
+yet robust enough to maintain identity across sites.
+
+The neutral substrate concept developed here
+can be understood as a formalization of this insight:
+the substrate provides the shared identity structure,
+while interpretive frameworks supply local meaning.
+The impossibility result specifies what cannot be shared
+at the boundary level without losing plasticity.
+
+\subsection{Positioning the Present Contribution}
+
+The contribution of this paper is a meta-theoretical constraint.
+Unlike BFO and DOLCE, it does not propose a specific taxonomy of entities;
+rather, it defines the informational boundary
+that any such taxonomy must respect to remain neutral.
+
+Recent work has questioned the stability of top-level ontological
+commitments in emerging technical domains.
+Köhler and Neuhaus argue that large language models
+exhibit a \textit{mercurial} ontological status:
+their classification shifts depending on task framing,
+deployment context,
+and explanatory purpose~\cite{kohler2025mercurial}.
+This observation supports the present result by illustrating
+that even top-level ontological categories
+cannot be guaranteed to remain stable
+when interpretive predicates are embedded,
+reinforcing the need, where neutrality across uses is required,
+for a neutrality-preserving substrate
+beneath such shifting conceptualizations.
+
+Recent work also emphasizes that ontology development itself
+requires negotiating consensus among stakeholders
+with divergent commitments~\cite{neuhaus2022consensus}.
+This observation reinforces the present argument by contrast:
+while temporary disagreement during ontology construction
+may be instrumental in converging on a sound design,
+ontologies intended to operate after construction
+in contexts of valid and persistent interpretive disagreement
+among admissible frameworks
+cannot rely on consensus as a foundational design assumption.
+Instead, such ontologies must, in these contexts, be structured to
+accommodate disagreement structurally without requiring its resolution.
+The impossibility result specifies
+the formal constraint such accommodation must satisfy.
+
+Recent ontology engineering work has emphasized
+tool-supported maintenance and rapid evolution in fast-moving domains.
+For example, the Artificial Intelligence Ontology (AIO) employs
+LLM-assisted curation and automated ODK pipelines
+to keep a domain ontology current
+as AI concepts and ethical concerns evolve~\cite{joachimiak2025aio}.
+Such approaches highlight the importance of distinguishing
+between evolving domain-level ontologies
+and the comparatively stable substrates on which they depend:
+the present result explains why neutrality constraints must apply
+to the latter even as the former necessarily change.
+
+By grounding this constraint in the Method of Levels of Abstraction,
+we move the debate from a sociological discussion of agreement
+to a formal requirement for observational invariance.
+
+This result is complementary to prior work rather than competitive.
+Upper ontologies may inform the categorical structure of a neutral substrate.
+Legal and causal frameworks may operate as interpretive layers atop it.
+What the present work provides is a principled boundary:
+a specification of what must be externalized
+in order for the substrate to support accountability across disagreement.

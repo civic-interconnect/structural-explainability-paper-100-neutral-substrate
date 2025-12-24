@@ -1,0 +1,98 @@
+# WHY: Automated link checking - behavior controlled by repo variable
+# OBS: Set IS_ACTIVE_REPO=true in GitHub Repository Settings > Secrets and variables > Actions > Variables
+# ALT: Default (no variable set) runs manual only - perfect for student repos
+
+name: Check Links
+
+on:
+  workflow_dispatch: # WHY: Manual trigger - always available
+
+  schedule:
+    - cron: "0 6 1 * *" # WHY: Runs monthly (1st of month) if IS_ACTIVE_REPO=true
+
+  pull_request: # WHY: Validates PR links if IS_ACTIVE_REPO=true
+
+# WHY: Prevent multiple simultaneous link checks on same ref
+concurrency:
+  group: link-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lychee:
+    # WHY: Skip scheduled/PR runs unless IS_ACTIVE_REPO=true or manual trigger
+    # OBS: vars.IS_ACTIVE_REPO linted as error in VS Code but works on GitHub
+    if: github.event_name == 'workflow_dispatch' || vars.IS_ACTIVE_REPO == 'true'
+
+    runs-on: ubuntu-latest
+
+    # WHY: Permissions needed for PR comments and issue creation
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v6 # OBS: v6 current as of Dec 2025
+
+      # WHY: Check all documentation and config files for broken links
+      - name: Check links with Lychee
+        uses: lycheeverse/lychee-action@v2 # OBS: v2 current as of Dec 2025
+        with:
+          args: >
+            --verbose
+            --no-progress
+            --user-agent "${{ github.repository }}/lychee"
+            './**/*.bib'
+            './**/*.md'
+            './**/*.html'
+            './**/*.tex'
+            './**/*.yml'
+            './**/*.yaml'
+          lycheeVersion: latest # OBS: Always use latest lychee release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # WHY: Provide helpful feedback on PRs with broken links
+      - name: Comment on PR if links broken
+        if: failure() && github.event_name == 'pull_request'
+        uses: actions/github-script@v8 # OBS: v8 current as of Dec 2025
+        with:
+          script: |
+            const comment = `## Link Check Results
+
+            Some links appear broken. Check the [workflow logs](${context.payload.repository.html_url}/actions/runs/${context.runId}) for details.`;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+      # WHY: Track broken links found during scheduled checks
+      # OBS: Only creates issue if none already open with 'broken-links' label
+      - name: Create issue for scheduled failures
+        if: failure() && github.event_name == 'schedule'
+        uses: actions/github-script@v8 # OBS: v8 current as of Dec 2025
+        with:
+          script: |
+            const title = `Link Check Failed - ${new Date().toISOString().split('T')[0]}`;
+            const body = `Weekly link check found broken links. [Check logs](${context.payload.repository.html_url}/actions/runs/${context.runId})`;
+
+            // WHY: Avoid duplicate issues
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: 'broken-links',
+              state: 'open'
+            });
+
+            if (existing.data.length === 0) {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: title,
+                body: body,
+                labels: ['maintenance', 'broken-links']
+              });
+            }

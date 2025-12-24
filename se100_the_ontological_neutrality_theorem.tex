@@ -1,0 +1,294 @@
+\PassOptionsToPackage{colorlinks=true,allcolors=black}{hyperref}
+% REQ-FILE: The above line, \PassOptionsToPackage{} must be very first line.
+
+\documentclass[11pt]{article}
+
+% ============================================================
+% Annotation visibility toggle
+% Build annotated PDF by defining \ANNOTATED (e.g., via latexmk flag).
+% Requires xcolor loaded first, then use \textcolor and \color commands.
+% ============================================================
+\newif\ifShowAnnotations
+\ifdefined\ANNOTATED
+  \ShowAnnotationstrue
+\else
+  \ShowAnnotationsfalse
+\fi
+
+% Encoding and font setup for cross-platform reproducibility
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Improve readability for dense theoretical material
+\usepackage{setspace}
+\onehalfspacing
+
+% Mathematical notation and table formatting for formal semantics
+\usepackage{amsmath, amssymb}
+\usepackage{array}
+\usepackage[table]{xcolor}
+\usepackage{colortbl}
+\usepackage{booktabs}
+\usepackage{graphicx}
+
+% Theorem environments (best-practice, widely standard)
+\usepackage{amsthm}
+
+% ------------------------------------------------------------
+% Numbering convention:
+% - All theorem-like statements share one counter, numbered by section.
+% - Definition/Example/Remark/Note also share the same counter family.
+%   (This is the most common convention in math/logic/category theory writing.)
+% ------------------------------------------------------------
+
+% Italic body text: results
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+% Claim varies; most standard is to share the theorem counter
+\newtheorem{claim}[theorem]{Claim}
+
+% Upright body text: definitions and examples
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+% Upright body text: remarks/notes
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{note}[theorem]{Note}
+
+% Optional: unnumbered versions for front-matter previews/callouts
+% (This is also standard when you want a preview without numbering.)
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem*{conjecture*}{Conjecture}
+\newtheorem*{claim*}{Claim}
+\newtheorem*{definition*}{Definition}
+\newtheorem*{example*}{Example}
+\newtheorem*{remark*}{Remark}
+\newtheorem*{note*}{Note}
+
+% Bibliography management and hyperlink support
+\usepackage{url}
+\usepackage{natbib}
+% load hyperref before bookmark to avoid warnings
+\usepackage{hyperref}
+\usepackage{bookmark}
+
+% Support multiple author affiliations
+\usepackage{authblk}
+
+% Improve typographic quality and line breaking
+\usepackage{microtype}
+
+% Categorical and commutative diagrams
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows.meta,calc,fit,positioning,shapes.geometric}
+
+% Callout boxes for examples and emphasis
+\usepackage[most]{tcolorbox}
+
+% Keywords macro for structured abstract metadata
+\providecommand{\keywords}[1]{\textbf{Keywords: } #1}
+
+% Notation for Raw vs Canonical categories in EP/CEE
+\newcommand{\Raw}{\mathsf{Raw}}
+\newcommand{\Canon}{\mathsf{Canon}}
+
+% Reusable figure callout box for visual emphasis
+\newcommand{\FigureCallout}[2]{%
+  \begin{tcolorbox}[
+    colback=gray!5,
+    colframe=black!40,
+    title={#1},
+    fonttitle=\bfseries,
+    arc=3pt,
+    boxrule=0.5pt,
+    width=\linewidth,
+    enhanced,
+    breakable
+  ]
+  #2
+  \end{tcolorbox}
+}
+
+% ============================================================
+% Annotations (REQ / WHY / OBS) scan-friendly
+% ============================================================
+\newcommand{\AnnColor}{gray} % xcolor color name
+\newlength{\AnnHangIndent}
+\setlength{\AnnHangIndent}{1.8em} % hanging indent amount
+
+% Single annotation line/block:
+% - small gray text
+% - bold label REQ(P0) then content
+% - hanging indent for scanning
+\newcommand{\AnnInline}[3]{%
+  \ifShowAnnotations
+    \par\begingroup
+      \footnotesize
+      \color{\AnnColor}%
+      \noindent
+      \hangindent=\AnnHangIndent
+      \hangafter=1
+      \textbf{#1(#2):}~#3\par
+    \endgroup
+    \vspace{0.15\baselineskip}%
+  \fi
+}
+\newcommand{\REQ}[2]{\AnnInline{REQ}{#1}{#2}}
+\newcommand{\WHY}[2]{\AnnInline{WHY}{#1}{#2}}
+\newcommand{\OBS}[2]{\AnnInline{OBS}{#1}{#2}}
+
+% Paragraph spacing prioritizes readability over traditional indentation
+\setlength{\parskip}{0.75em}
+\setlength{\parindent}{0em}
+
+% Compact list formatting for dense conceptual content
+\usepackage{enumitem}
+\setlist[itemize]{itemsep=0.2em, topsep=0.2em, parsep=0em, partopsep=0em}
+
+% Defensive re-definition ensures commands exist if loaded earlier
+\providecommand{\Raw}{\mathrm{Raw}}
+\providecommand{\Canon}{\mathrm{Canon}}
+
+% ============================================================
+\title{The Ontological Neutrality Theorem:\\
+Why Neutral Ontological Substrates Must Be \\
+Pre-Causal and Pre-Normative}
+% ============================================================
+
+\author[1,2]{Denise M. Case}
+\affil[1]{Northwest Missouri State University, Computer Science and Information Systems, Maryville, MO, USA}
+\affil[2]{Civic Interconnect, Ely, MN, USA}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\vspace{-1em}
+
+% % Explicitly mark preprint status
+% \begin{tcolorbox}[colback=gray!5, colframe=black!20, boxrule=0.3pt]
+%   \textbf{Preprint Notice.}
+%   This preprint has not undergone peer review.
+%   It is shared to support community discussion, transparency research, and early technical evaluation.
+% \end{tcolorbox}
+
+\begin{abstract}
+  Modern data systems must support accountability
+  across persistent legal, political, and analytic disagreement.
+  This requirement imposes strict constraints
+  on the design of any ontology intended to function as a shared substrate.
+  We establish an impossibility result for ontological neutrality:
+  neutrality, understood as interpretive non-commitment and stability
+  under incompatible extensions, is incompatible with the inclusion of
+  causal or normative commitments at the foundational layer.
+  Any ontology that asserts causal or deontic conclusions
+  as ontological facts cannot serve as a neutral substrate across divergent
+  frameworks without revision or contradiction.
+  It follows that neutral ontological substrates
+  must be pre-causal and pre-normative,
+  representing entities, together with identity and persistence conditions,
+  while externalizing interpretation, evaluation, and explanation.
+  This paper does not propose a specific ontology or protocol;
+  rather, it establishes the necessary design constraints
+  for any system intended to maintain a shared,
+  stable representation of reality across conflicting interpretive frameworks.
+\end{abstract}
+
+% =============================================================================
+% Theorem Preview 
+% =============================================================================
+
+\bigskip
+\noindent\textbf{Statement of Result (Preview).}
+\emph{Let $\mathcal{O}$ be an ontology intended to function
+  as a neutral substrate across diverse interpretive frameworks.
+  Then $\mathcal{O}$ satisfies the requirements of neutrality
+  if and only if its foundational Level of Abstraction
+  excludes causal and normative primitives.}
+
+\medskip
+\noindent
+Informally: Neutrality is not achieved by
+finding uncontested causes,
+but by externalizing the category of causation entirely.
+To be a substrate for disagreement, an ontology must be
+pre-causal and pre-normative.
+
+\medskip
+\noindent
+The formal statement and proof appear in Section~\ref{sec:impossibility}.
+
+\keywords{
+  Formal ontology;
+  ontological neutrality;
+  accountability;
+  neutrality constraints;
+  extension stability;
+  deontic and causal commitment
+}
+
+\ifShowAnnotations
+  \clearpage
+  \input{sections/00_contract}
+  \clearpage
+\fi
+
+\input{sections/01_intro}           % Introduction: Accountability, Disagreement, and Neutral Substrates
+\input{sections/02_related}         % Related Work
+\input{sections/03_requirements}    % Formal Requirements for Ontological Neutrality
+\input{sections/04_impossibility}   % The Impossibility of Causal and Normative Substrates
+\input{sections/05_implications}    % Implications for Ontology Design 
+\input{sections/06_conclusion}      % Conclusion
+
+
+\section*{Statements and Declarations}
+
+\subsection*{Author Contributions}
+The author was solely responsible for the conception, analysis, and writing of this manuscript.
+
+\subsection*{Declaration of Conflicting Interest}
+The author declares no potential conflicts of interest
+with respect to the research, authorship,
+and/or publication of this article.
+
+\subsection*{Funding}
+This research received no external funding.
+
+\subsection*{Data Availability}
+No datasets were generated or analyzed
+during the current study.
+
+\subsection*{Ethical Approval}
+Not applicable.
+
+\subsection*{Consent to Participate}
+Not applicable.
+
+\subsection*{Consent for Publication}
+Not applicable.
+
+\appendix
+\clearpage
+
+\input{sections/99_appendixG}   % Glossary
+
+\ifShowAnnotations
+  \clearpage
+  \input{sections/99_appendixZ}   % Trace (internal)
+\fi
+
+\bibliographystyle{plainnat}
+\bibliography{bibliography/bibliography}
+\end{document}

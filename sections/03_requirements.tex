@@ -1,0 +1,321 @@
+% !TeX root = se100_the_ontological_neutrality_theorem.tex
+
+\section{Formal Requirements for Ontological Neutrality}
+\label{sec:requirements}
+
+The notion of neutrality used in this paper
+is deliberately narrow and operational.
+It is not intended to capture moral neutrality, political impartiality,
+or epistemic skepticism in a general sense.
+Rather, neutrality is defined with respect to the functional role an ontology
+is expected to play in explanation and accountability systems:
+serving as a shared substrate across divergent interpretive frameworks.
+
+An ontological substrate is neutral, in the sense relevant here,
+if it satisfies two requirements.
+These requirements are independent but jointly necessary.
+Together, they characterize the minimal conditions
+under which a shared ontology can support accountability
+without foreclosing disagreement.
+
+Throughout this section, all requirements are understood
+as analytic consequences of this
+role-relative definition of neutrality,
+not as general design prescriptions for ontologies.
+
+Interpretive non-commitment constrains what the substrate asserts
+at its chosen Level of Abstraction.
+Extension stability is a global consistency condition:
+even a substrate that is silent on contested predicates
+can fail neutrality if it encodes background axioms
+that conflict with some admissible interpretive framework.
+
+
+%-------------------------------------------------------
+\subsection{Interpretive Non-Commitment}
+\label{subsec:interpretive-nc}
+%-------------------------------------------------------
+\REQ{INC}{The substrate MUST exclude causal and normative observables
+  from its Level of Abstraction.}
+\WHY{INC}{Causal and deontic observables vary across admissible interpretive frameworks
+  and therefore violate neutrality.}
+
+The first requirement,
+under this definition of neutrality,
+is interpretive non-commitment.
+An ontology satisfies this requirement
+if it does not assert conclusions
+whose truth values vary across admissible interpretive frameworks.
+
+Admissibility is determined by the domain of application,
+not by the substrate.
+A framework is admissible if recognized stakeholders
+in the domain accept it as a legitimate interpretive stance,
+for example, a jurisdiction's legal code,
+a scientific community's causal methodology,
+or an institution's normative charter.
+The substrate must accommodate all such frameworks;
+it does not adjudicate among them.
+
+\begin{definition}[Admissible Framework]
+  A framework $\mathcal{F}$ is \emph{admissible} if it is internally consistent
+  ($\mathcal{F} \not\vdash \bot$)
+  and represents a legitimate interpretive stance within the domain of application.
+  The set of all admissible frameworks is denoted $\mathbb{F}$.
+  Admissible frameworks need not be mutually compatible.
+\end{definition}
+
+\noindent
+With this notion in hand, we can state the first requirement precisely.
+
+\begin{definition}[Framework-Variant Proposition]
+  A proposition $p$ is \emph{framework-variant}
+  if there exist admissible frameworks
+  $\mathcal{F}_1, \mathcal{F}_2 \in \mathbb{F}$
+  such that
+  $\mathcal{S} \cup \mathcal{F}_1 \vdash p$
+  and
+  $\mathcal{S} \cup \mathcal{F}_2 \vdash \neg p$.
+\end{definition}
+
+
+\begin{definition}[Interpretive Non-Commitment]
+  An ontology $\mathcal{S}$ satisfies \emph{interpretive non-commitment}
+  if there is no proposition $p$ such that $\mathcal{S} \vdash p$
+  and the truth of $p$ varies across admissible interpretive frameworks.
+\end{definition}
+
+Accountability systems routinely involve disagreements
+about what occurred, why it occurred, and how it should be evaluated.
+Legal frameworks may disagree about whether an action was permitted or prohibited;
+analytic frameworks may disagree about whether one event caused another;
+political frameworks may disagree about responsibility or intent.
+These disagreements are not merely epistemic gaps
+to be filled with additional data.
+They reflect differences in background assumptions,
+governing rules, and interpretive commitments.
+
+A neutral substrate,
+under this definition,
+must therefore refrain from
+settling such questions at the ontological level.
+If an ontology asserts that a particular action was
+obligatory, forbidden, or permitted,
+it necessarily privileges one normative framework over others.
+Similarly, if it asserts that one event caused another,
+it privileges a particular causal model or explanatory framework.
+In both cases, the ontology ceases to be neutral with respect to interpretation.
+
+Interpretive non-commitment does not require the ontology
+to ignore normative or causal discourse altogether.
+Rather, it requires that the substrate operate
+at a Level of Abstraction (LoA)~\cite{floridi2008levels,floridi2011philosophy}
+that excludes explanatory or evaluative observables.
+In this framework, an LoA consists of a set of observables;
+neutrality is achieved by selecting an LoA
+where the observables are restricted to
+entity existence and identity conditions
+(i.e., what entities exist and how they are individuated).
+
+These observables constitute the
+invariant core of the representation,
+remaining valid regardless of the
+higher-level interpretive logic applied to them.
+Claims about obligations, permissions, or causation
+are thus represented as external assertions
+made by agents within an interpretive framework,
+rather than being internalized as substrate-layer facts.
+
+\OBS{INC-DISCHARGE}{This subsection discharges the
+  interpretive non-commitment component of neutrality
+  by restricting admissible observables.}
+
+%-------------------------------------------------------
+\subsection{Extension Stability}
+\label{subsec:extension}
+%-------------------------------------------------------
+\REQ{EXT}{The substrate MUST remain stable under extension
+  by incompatible interpretive frameworks.}
+
+\WHY{EXT}{Neutral substrates MUST support disagreement
+  without revision of foundational commitments.}
+
+
+The second requirement,
+given the neutrality role defined above,
+is extension stability.
+An ontology satisfies this requirement if it remains consistent
+when extended by incompatible interpretive frameworks.
+
+\begin{definition}[Extension Stability]
+  An ontology $\mathcal{S}$ satisfies \emph{extension stability}
+  if for all admissible frameworks $\mathcal{F} \in \mathbb{F}$,
+  $\mathcal{S} \cup \mathcal{F} \not\vdash \bot$.
+\end{definition}
+
+Extension stability does not require that all admissible interpretive frameworks
+be simultaneously combined into a single, globally consistent theory.
+Rather, the requirement is \emph{pairwise compatibility with the substrate}:
+for each admissible framework $\mathcal{F} \in \mathbb{F}$ considered independently,
+the combined theory $\mathcal{S} \cup \mathcal{F}$ must remain consistent.
+The substrate is permitted to be extended by additional structures,
+records, or interpretive layers, provided such extensions do not retract,
+revise, or contradict substrate-layer assertions.
+A violation occurs only when accommodating a new admissible framework
+requires modification of the substrate itself.
+Disagreement between frameworks, including disagreement about causal,
+normative, or explanatory conclusions, is expected and permitted;
+what is prohibited is embedding commitments at the substrate layer
+that force revision when such disagreement arises.
+
+\OBS{EXT-SCOPE}{Extension stability is a constraint on the substrate,
+  not a requirement that interpretive frameworks be mutually compatible.}
+
+In practice, data systems are not static.
+New legal interpretations emerge, analytic models are revised,
+and political judgments are contested and overturned.
+A neutral substrate,
+in order to satisfy extension stability,
+must be able to accommodate such changes
+without requiring revision of its foundational commitments.
+Interpretive disagreement should result in additional structure
+layered atop the substrate, not in modification of the substrate itself.
+
+Extension stability is violated when
+the introduction of a new interpretive framework
+requires retracting or revising ontological assertions.
+
+Consider a substrate $\mathcal{S}$ used by two interpretive frameworks,
+$\mathcal{F}_1$ and $\mathcal{F}_2$, that contradict each other
+($\mathcal{F}_1 \cup \mathcal{F}_2 \vdash \bot$).
+For $\mathcal{S}$ to remain stable, it must be separately consistent
+with each framework:
+$\mathcal{S} \cup \mathcal{F}_1 \not\vdash \bot$ and
+$\mathcal{S} \cup \mathcal{F}_2 \not\vdash \bot$.
+The substrate need not reconcile the frameworks with each other;
+it must simply avoid assertions that either framework rejects.
+
+Now suppose $\mathcal{S}$ embeds a causal or normative conclusion $c$
+that $\mathcal{F}_1$ accepts but $\mathcal{F}_2$ rejects
+(i.e., $\mathcal{F}_2 \vdash \neg c$).
+Then $\mathcal{S} \cup \mathcal{F}_2 \vdash c \land \neg c \vdash \bot$:
+the combination is inconsistent, and $\mathcal{S}$ must be revised.
+
+This demonstrates that embedding any causal or deontic conclusion,
+regardless of current consensus,
+introduces latent instability.
+Such a substrate cannot function as a permanent neutral foundation,
+because some admissible framework may eventually reject
+what the substrate asserts.
+
+This requirement rules out approaches in which neutrality
+is achieved through periodic revision or replacement of ontological commitments.
+Stability under extension is a necessary condition
+for interoperability across time, jurisdictions, and analytic communities.
+
+This property is sometimes called \emph{monotonicity}:
+the substrate grows by addition of interpretive layers,
+never by retraction of foundational assertions.
+
+\OBS{EXT-DISCHARGE}{This subsection formalizes instability
+  introduced by causal or normative primitives
+  under incompatible extensions.}
+
+%-------------------------------------------------------
+\subsection{Scope of Neutrality}
+\label{subsec:scope}
+%-------------------------------------------------------
+
+\REQ{SCOPE-GUARD}{This paper MUST NOT argue that all ontologies should be neutral,
+  only that neutral substrates have categorical constraints.}
+\WHY{SCOPE-GUARD}{Many ontologies are legitimately causal or normative;
+  neutrality is a role-relative requirement, not a universal virtue.}
+
+
+It is important to emphasize that neutrality,
+as defined here, is not global.
+A neutral ontology is not neutral with respect to
+existence, identity, or classification.
+It must take substantive positions on what kinds of entities exist,
+how they are distinguished, and what criteria govern their persistence.
+These commitments are necessary for accountability
+and do not vary across interpretive frameworks
+in the same way that causal or normative conclusions do.
+Unless otherwise noted, all entailment is with respect to
+classical first-order logic with equality.
+
+Neutrality is therefore scoped specifically to interpretive commitments:
+those aspects of representation whose truth depends on
+legal, normative, causal, or analytic frameworks
+that may legitimately disagree.
+The exclusion of such commitments from the substrate
+is not a matter of preference or conservatism;
+it is a functional requirement derived from
+the role the ontology is intended to play
+as a neutral substrate.
+
+The design of a neutral substrate requires
+distinguishing between the Level of Abstraction (LoA) and
+the Level of Organization (LoO) as referenced above.
+While the LoA determines the set of available observables
+(e.g., excluding causal predicates),
+the LoO characterizes the architectural hierarchy of the system.
+
+A further scope condition applies.
+The neutrality requirements assume that entity existence and identity conditions
+are themselves invariant across admissible frameworks.
+If frameworks disagree about identity, for example,
+whether two references denote the same actor,
+or whether a particular institutional artifact exists, then
+the substrate cannot be neutral with respect to those frameworks.
+In such cases, identity must be resolved at a prior stage,
+or the domain does not admit a neutral substrate in the sense defined here.
+This is not a defect of the framework but a boundary condition:
+neutrality presupposes a shared ontological ground on which interpretation can vary.
+
+\OBS{ID-INVAR-DISCHARGE}{This subsection establishes that
+  identity invariance is a boundary condition for neutrality,
+  discharging REQ{ID-INVAR}.}
+
+We propose that the neutral substrate occupies the primary LoO,
+providing the raw entity and identity conditions
+upon which higher-level, interpretive LoOs are organized.
+This ordering reflects the direction of dependence
+required for neutrality:
+identity is established at the substrate layer
+before any interpretive framework is applied.
+Explanation and interpretation operate on entities
+whose existence and identity are already fixed.
+This ensures that changes in higher-level organizational logic
+do not propagate downward to corrupt the foundational substrate.
+
+\OBS{ID-DISCHARGE}{This subsection establishes that
+  entity existence and identity conditions are
+  fixed at the substrate layer,
+  prior to interpretive extension,
+  discharging REQ{ID}.}
+
+\OBS{DEP-DISCHARGE}{This subsection establishes that
+  identity precedes explanation, and explanation precedes interpretation,
+  discharging REQ{DEP}.}
+
+Together, interpretive non-commitment and
+extension stability define the
+functional boundaries of a neutral substrate.
+These requirements establish that neutrality is
+not a lack of content, but a categorical constraint:
+to remain stable under pluralistic interpretation,
+a foundational ontology must be
+strictly pre-causal and pre-normative.
+In the next section, we provide a
+formal impossibility argument
+showing why any violation of these categorical exclusions
+renders a substrate inherently non-neutral.
+
+\OBS{SCOPE-GUARD-DISCHARGE}{This subsection clarifies that neutrality
+  is a role-relative constraint, not a universal requirement for all ontologies.}
+
+\OBS{REQ-TO-IMP}{Section~\ref{sec:requirements} jointly defines neutrality
+  such that any violation of pre-causality or pre-normativity
+  entails failure of extension stability,
+  enabling the impossibility argument in the next section.}

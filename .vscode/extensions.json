@@ -1,0 +1,15 @@
+// WHY: Recommends VS Code extensions for this repository
+// OBS: VS Code prompts to install these on first open
+// OBS: No formatter or linter extensions are recommended for proof based latex papers
+// ALT: Users can ignore recommendations if they prefer different tools
+
+{
+  "recommendations": [
+    // REQ: LaTeX compilation
+    "james-yu.latex-workshop",
+
+    // OBS: Standard across all repos
+    "github.vscode-github-actions", // GitHub Actions syntax
+    "yzhang.markdown-all-in-one" // Markdown preview
+  ]
+}

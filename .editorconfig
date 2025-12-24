@@ -1,0 +1,82 @@
+# REQ.UNIVERSAL: All professional GitHub project repositories MUST include .editorconfig.
+# WHY: Establish a cross-editor baseline (VS Code, PyCharm, Vim, etc.) so diffs stay clean and formatting is consistent.
+# ALT: Repository may omit .editorconfig ONLY if formatting is enforced equivalently by CI + formatter tooling for all contributors or solo projects.
+# CUSTOM: Adjust indent_size defaults only if organizational standards change; keep stable across projects.
+
+root = true
+
+[*]
+# WHY: Normalize line endings and encoding across Windows, macOS, and Linux.
+end_of_line = lf
+charset = utf-8
+
+# WHY: Newline at EOF avoids noisy diffs and tool warnings.
+insert_final_newline = true
+
+# WHY: Remove accidental whitespace noise in diffs.
+trim_trailing_whitespace = true
+
+# WHY: Default to 2 spaces for configs and many markup files; language-specific overrides follow.
+indent_style = space
+indent_size = 2
+
+# === Markup ===
+
+[*.md]
+# WHY: Keep Markdown clean; use explicit <br> for hard line breaks.
+indent_size = 2
+trim_trailing_whitespace = true
+
+[*.{tex,cls,sty}]
+# WHY: LaTeX convention is 2 spaces.
+indent_size = 2
+indent_style = space
+
+[*.xml]
+# WHY: XML convention is 2 spaces.
+indent_size = 2
+indent_style = space
+
+[*.{yml,yaml}]
+# WHY: YAML convention is 2 spaces.
+indent_size = 2
+indent_style = space
+
+# === Data and config ===
+
+[*.{json,jsonc,jsonl,ndjson}]
+# WHY: JSON tooling typically expects 2 spaces.
+indent_size = 2
+indent_style = space
+
+[*.toml]
+# WHY: TOML often follows 4-space indentation in many projects.
+indent_size = 4
+indent_style = space
+
+# === Code ===
+
+[*.{js,ts}]
+# WHY: JS/TS ecosystem commonly uses 2 spaces.
+indent_size = 2
+indent_style = space
+
+[*.{py,pyi}]
+# WHY: Python convention is 4 spaces.
+indent_size = 4
+indent_style = space
+
+[*.ps1]
+# WHY: PowerShell convention is 4 spaces.
+indent_size = 4
+indent_style = space
+
+[*.{c,cpp,h,java,cs,go,rs}]
+# WHY: Many C-family and systems languages commonly use 4 spaces (project-dependent).
+indent_size = 4
+indent_style = space
+
+[*.{sh,bash}]
+# WHY: Shell script convention is 2 spaces.
+indent_size = 2
+indent_style = space

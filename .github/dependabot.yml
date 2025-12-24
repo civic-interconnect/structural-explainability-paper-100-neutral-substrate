@@ -1,0 +1,13 @@
+# WHY: Automatically updates GitHub Actions to latest versions
+# OBS: Runs monthly to keep actions secure and up-to-date
+# REQ: Keep this file to maintain security patches in workflows
+
+version: 2
+
+updates:
+  - package-ecosystem: "github-actions" # WHY: Updates action versions in workflows
+    directory: "/" # WHY: Scan all .github/workflows/*.yml files
+    schedule:
+      interval: "monthly" # WHY: Monthly updates balance freshness vs notification noise
+    commit-message:
+      prefix: "ci(deps)" # WHY: Conventional commit format for changelog tools

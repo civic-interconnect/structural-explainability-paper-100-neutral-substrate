@@ -2,4 +2,5 @@
 # OBS: Schemes are allowed; this file is read by TeX-Live/setup-texlive-action
 
 scheme-medium
+authblk
 latexmk

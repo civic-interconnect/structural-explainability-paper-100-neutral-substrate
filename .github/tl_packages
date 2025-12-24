@@ -3,4 +3,5 @@
 
 scheme-medium
 authblk
+pdflatex
 latexmk

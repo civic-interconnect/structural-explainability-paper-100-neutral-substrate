@@ -1,22 +1,9 @@
-# REQ.UNIVERSAL: Open-source projects SHOULD include CITATION.cff.
-# WHY: Support correct citation and attribution.
-# ALT: Internal or private repositories may omit citation metadata; remove or modify this file as appropriate.
-# CUSTOM: Update author, repository, license, and keyword fields to reflect project specifics.
-# USAGE: Update fields below; see https://citation-file-format.github.io/ for details.
-
-## REQ.PROJECT: Stack Invariants
-# The following invariants hold:
-# 1. Neutrality is not optional. It is defined here and assumed throughout.
-# 2. No paper resolves causal or normative questions at the substrate level.
-# 3. Interpretation is always externalized.
-# 4. Entity identity precedes explanation.
-# 5. Disagreement is represented, not eliminated.
-# Any contribution that violates these invariants is out of scope for this repository.
-
 cff-version: 1.2.0
 type: article
+
 title: "The Ontological Neutrality Theorem: Why Neutral Ontological Substrates Must Be Pre-Causal and Pre-Normative"
-message: If you use this work, please cite it as below.
+version: "v0.1.0"
+date-released: "2025-12-24"
 
 authors:
   - family-names: Case
@@ -24,36 +11,24 @@ authors:
     orcid: https://orcid.org/0000-0001-6165-7389
     affiliation: "Northwest Missouri State University; Civic Interconnect"
 
-date-released: 2025-12-24
-version: "draft"
 repository-code: https://github.com/civic-interconnect/structural-explainability-paper-100-neutral-substrate
 license: CC-BY-4.0
 
 abstract: >
-  Modern data systems must support accountability
-  across persistent legal, political, and analytic disagreement.
-  This requirement imposes strict constraints
-  on the design of any ontology intended to function as a shared substrate.
-  We establish an impossibility result for ontological neutrality:
-  neutrality, understood as interpretive non-commitment and stability
-  under incompatible extensions, is incompatible with the inclusion of
-  causal or normative commitments at the foundational layer.
-  Any ontology that asserts causal or deontic conclusions
-  as ontological facts cannot serve as a neutral substrate across divergent
-  frameworks without revision or contradiction.
-  It follows that neutral ontological substrates
-  must be pre-causal and pre-normative,
-  representing entities, together with identity and persistence conditions,
-  while externalizing interpretation, evaluation, and explanation.
-  This paper does not propose a specific ontology or protocol;
-  rather, it establishes the necessary design constraints
-  for any system intended to maintain a shared,
-  stable representation of reality across conflicting interpretive frameworks.
+  This paper derives necessary design constraints for ontological substrates 
+  intended to support stable reference under persistent disagreement, 
+  showing that causal and normative commitments must be externalized 
+  to preserve substrate neutrality.
 
 keywords:
   - formal ontology
   - ontological neutrality
-  - accountability
-  - neutrality constraints
+  - neutral substrates
+  - stable reference
+  - persistent disagreement
   - extension stability
-  - deontic and causal commitment
+  - causal commitment
+  - normative commitment
+  - structural explainability
+
+message: "If you use this software, please cite it as described in this file."

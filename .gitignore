@@ -45,8 +45,9 @@ Thumbs.db
 # WHY: Ignore editor state while allowing a shared baseline configuration.
 .vscode/*
 !.vscode/extensions.json
-!.vscode/settings.json
-# ALT: Commit .vscode/tasks.json only if tasks are essential to the workflow.
+# ALT: Commit .vscode/settings.json only if essential and not user-specific.
+# !.vscode/settings.json
+# ALT: Commit .vscode/tasks.json only if tasks are essential and not user-specific.
 # !.vscode/tasks.json
 
 # === Environment variables and secrets ===
@@ -92,8 +93,25 @@ build_annotated/
 # CUSTOM: Update paths if reference locations change
 references/
 
+# === Lean 4 ===
+/.lake/
+/build/
+*.olean
+*.ilean
+*.trace
+lake-packages/
+
+# === Coq ===
+*.vo
+*.vok
+*.vos
+*.glob
+.coq-native/
+
+# === Other ===
+
 # WHY: Personal notes and scratch work not intended for publication
-NOTES.md
+PRIVATE_NOTES.md
 
 # === Project-Specific ===
 # WHY: Include key PDF in the repository root

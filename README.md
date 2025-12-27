@@ -5,9 +5,10 @@
 [![Check Links](https://github.com/civic-interconnect/structural-explainability-paper-100-neutral-substrate/actions/workflows/links.yml/badge.svg)](https://github.com/civic-interconnect/structural-explainability-paper-100-neutral-substrate/actions/workflows/links.yml)
 [![ArXiv Prep](https://github.com/civic-interconnect/structural-explainability-paper-100-neutral-substrate/actions/workflows/arxiv-prep.yml/badge.svg)](https://github.com/civic-interconnect/structural-explainability-paper-100-neutral-substrate/actions/workflows/arxiv-prep.yml)
 
-> Paper establishing that for an ontological substrate to remain neutral and stable
-> under allowable frameworks that include persistent disagreement,
-> causal or normative commitments cannot be part of the substrate itself.
+> This paper derives necessary design constraints for ontological substrates 
+> intended to support stable reference under persistent disagreement, 
+> showing that causal and normative commitments must be externalized 
+> to preserve substrate neutrality.
 
 ## Paper
 

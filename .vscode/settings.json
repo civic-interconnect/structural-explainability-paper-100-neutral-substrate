@@ -3,13 +3,12 @@
 // ALT: Users can override in their personal settings if needed
 {
   // OBS: Editor settings - apply to all file types
-  "editor.formatOnSave": false, // WHY: Avoid auto-formatting in proof-based LaTeX repos
+  "editor.formatOnSave": false,
 
   // OBS: File handling - auto-save and performance
-  "files.autoSave": "onFocusChange", // WHY: Auto-save prevents losing work
+  "files.autoSave": "onFocusChange",
   "files.autoSaveDelay": 1000,
   "files.watcherExclude": {
-    // WHY: Exclude build directories from file watcher
     "**/build/**": true,
     "**/build_annotated/**": true,
     "**/.venv/**": true,
@@ -24,17 +23,13 @@
   ],
 
   // REQ: LaTeX Workshop - required for this repo
-  "latex-workshop.latex.autoBuild.run": "onFileChange", // WHY: Compile as files change for quick feedback
+  "latex-workshop.latex.autoBuild.run": "onFileChange",
 
-  // WHY: Ensure LaTeX Workshop discovers the repository bibliography
   // OBS: Bibliography lives at repo root
   "latex-workshop.latex.bibDirs": ["."],
 
   // WHY: Keep build artifacts separate and predictable
   "latex-workshop.latex.outDir": "./build",
-
-  // WHY: Use latexindent from MiKTeX installation
-  "latex-workshop.formatting.latexindent.path": "C:/Users/edaci/AppData/Local/Programs/MiKTeX/miktex/bin/x64/latexindent.exe",
 
   // WHY: Enable PDF <-> source navigation
   "latex-workshop.synctex.afterBuild.enabled": true,

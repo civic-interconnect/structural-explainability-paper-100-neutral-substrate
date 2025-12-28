@@ -116,3 +116,5 @@ PRIVATE_NOTES.md
 # === Project-Specific ===
 # WHY: Include key PDF in the repository root
 !se100_the_ontological_neutrality_theorem.pdf
+!tools/build/
+!tools/build/**

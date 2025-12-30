@@ -3,7 +3,7 @@
 # Delete build/ and build_annotated/ directories
 
 Set-StrictMode -Version Latest
-$ErrorActionPreference = 'Stop' 
+$ErrorActionPreference = 'Stop'
 function Write-Info([string]$Message) { Write-Host $Message -ForegroundColor Cyan }
 function Write-Ok([string]$Message) { Write-Host $Message -ForegroundColor Green }
 function Write-Warn([string]$Message) { Write-Host $Message -ForegroundColor Yellow }

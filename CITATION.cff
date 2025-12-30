@@ -15,9 +15,9 @@ repository-code: https://github.com/structural-explainability/structural-explain
 license: CC-BY-4.0
 
 abstract: >
-  This paper derives necessary design constraints for ontological substrates 
-  intended to support stable reference under persistent disagreement, 
-  showing that causal and normative commitments must be externalized 
+  This paper derives necessary design constraints for ontological substrates
+  intended to support stable reference under persistent disagreement,
+  showing that causal and normative commitments must be externalized
   to preserve substrate neutrality.
 
 keywords:
@@ -31,4 +31,4 @@ keywords:
   - normative commitment
   - structural explainability
 
-message: "If you use this software, please cite it as described in this file."
+message: "If using this software, please cite it as described in this file."

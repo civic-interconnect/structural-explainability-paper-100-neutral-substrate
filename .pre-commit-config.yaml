@@ -1,0 +1,67 @@
+# REQ.PROJECT: This repository SHOULD include a .pre-commit-config.yaml when quality gates are required.# REQ: Any check that can be run locally MUST be available here.# WHY: Provide fast, consistent local checks aligned with upstream quality gates.# WHY: Keep local checks compatible with repository-wide formatting rules.# OBS: Formatting baselines are defined in#      .editorconfig (whitespace/indentation) and#      .gitattributes (EOL normalization).# OBS: These hooks do not override .editorconfig or .gitattributes;#      they only prevent common diff noise and validate repository metadata.# ALT: Checks that are inherently non-local are handled upstream.# CUSTOM: Keep the hook set minimal and non-destructive for normative Markdown specs.## OPTIONAL LOCAL USAGE (no repo venv required):#   Install uv (once, user-level).#   uv self update#   uvx pre-commit install#   uvx pre-commit run --all-files## OBS: If a hook reports "files were modified", re-run last command to confirm a clean pass.## NOTE: pre-commit is optional.#       Repositories do not require Python, uv, or pre-commit to clone or commit.exclude: |  (?x)^(    \.DS_Store|    \.ipynb_checkpoints/|    \.mypy_cache/|    \.pytest_cache/|    \.ruff_cache/|    \.tox/|    \.venv/|    build/|    dist/|    node_modules/|    site/  )repos:  - repo: https://github.com/pre-commit/pre-commit-hooks    rev: v6.0.0 # OBS: v6 current as of Dec 30 2025    hooks:      - id: check-added-large-files # OBS: prevent large binary files      - id: trailing-whitespace # OBS: clean trailing whitespace per .editorconfig      - id: end-of-file-fixer # OBS: ensure files end with a newline per .gitattributes      - id: check-merge-conflict # OBS: prevent committing unresolved merge conflicts        # WHY: Workflow files may intentionally include marker-like strings (e.g., >>>>).        exclude: ^\.github/workflows/.*\.(yml|yaml)$      - id: check-yaml # OBS: validate YAML syntax        files: \.(yml|yaml)$  - repo: https://github.com/adrienverge/yamllint    rev: v1.37.1 # OBS: pinned for reproducibility    hooks:      - id: yamllint # OBS: validate YAML structure and policy (no line-length enforcement)        args: [-c, .yamllint.yml]        files: \.(yml|yaml)$  - repo: https://github.com/rhysd/actionlint    rev: v1.7.10 # OBS: v1.7.10 current as of Dec 30 2025    hooks:      - id: actionlint # OBS: validate GitHub Actions workflow syntax        files: ^\.github/workflows/.*\.(yml|yaml)$# REQ.PROJECT: This repository SHOULD include a .pre-commit-config.yaml when quality gates are required.
+# REQ: Any check that can be run locally MUST be available here.
+# WHY: Provide fast, consistent local checks aligned with upstream quality gates.
+# WHY: Keep local checks compatible with repository-wide formatting rules.
+# OBS: Formatting baselines are defined in
+#      .editorconfig (whitespace/indentation) and
+#      .gitattributes (EOL normalization).
+# OBS: These hooks do not override .editorconfig or .gitattributes;
+#      they only prevent common diff noise and validate repository metadata.
+# ALT: Checks that are inherently non-local are handled upstream.
+# CUSTOM: Keep the hook set minimal and non-destructive for normative Markdown specs.
+#
+# OPTIONAL LOCAL USAGE (no repo venv required):
+#   Install uv (once, user-level).
+#   uv self update
+#   uvx pre-commit install
+#   uvx pre-commit run --all-files
+#
+# OBS: If a hook reports "files were modified", re-run last command to confirm a clean pass.
+#
+# NOTE: pre-commit is optional.
+#       Repositories do not require Python, uv, or pre-commit to clone or commit.
+
+exclude: |
+  (?x)^(
+    \.DS_Store|
+    \.ipynb_checkpoints/|
+    \.mypy_cache/|
+    \.pytest_cache/|
+    \.ruff_cache/|
+    \.tox/|
+    \.venv/|
+    build/|
+    dist/|
+    node_modules/|
+    site/
+  )
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-added-large-files # OBS: prevent large binary files
+      - id: trailing-whitespace # OBS: clean trailing whitespace per .editorconfig
+      - id: end-of-file-fixer # OBS: ensure files end with a newline per .gitattributes
+
+      - id: mixed-line-ending # OBS: normalize line endings before linters run
+        # WHY: yamllint enforces LF; Windows working copies may be CRLF.
+        args: [--fix=lf]
+
+      - id: check-merge-conflict # OBS: prevent committing unresolved merge conflicts
+
+      - id: check-yaml # OBS: validate YAML syntax
+        files: \.(yml|yaml)$
+
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.37.1
+    hooks:
+      - id: yamllint # OBS: validate YAML structure and policy (no line-length enforcement)
+        args: [-c, .yamllint.yml]
+        files: \.(yml|yaml)$
+
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.10
+    hooks:
+      - id: actionlint # OBS: validate GitHub Actions workflow syntax
+        files: ^\.github/workflows/.*\.(yml|yaml)$

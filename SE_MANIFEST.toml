@@ -1,0 +1,38 @@
+schema = "se-manifest-1"
+
+[repo]
+name = "se100_the_ontological_neutrality_theorem"
+org  = "structural-explainability"
+kind = "paper"
+status = "explanatory"
+since = "2025"
+summary = "Applied Ontology paper establishing neutrality constraints for shared substrates."
+
+[layer]
+space = "SE"
+role  = "justification-neutrality"
+
+[depends]
+required = []
+optional = []
+
+[provides]
+artifacts = ["README.md", "paper/*.tex", "CITATION.cff"]
+
+[scope]
+includes = [
+  "theoretical justification for neutrality",
+  "impossibility argument for causal or normative substrate commitment",
+]
+excludes = [
+  "normative specification text",
+  "implementation requirements",
+]
+
+[citation]
+cff = "CITATION.cff"
+preferred = "paper"
+bib_hint = "case2025neutrality"
+
+[traceability]
+identifier_map = "none"

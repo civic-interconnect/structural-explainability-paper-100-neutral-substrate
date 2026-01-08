@@ -1,54 +1,58 @@
+# ============================================================
+# .gitignore (Keep unnecessary files out of the repository)
+# ============================================================
+
 # REQ.UNIVERSAL: All professional GitHub project repositories MUST include .gitignore.
 # WHY: Prevent committing generated artifacts, local state, secrets, and OS-specific files.
 # ALT: Repository may customize ignores, but MUST preserve universal safety rules.
-# CUSTOM: Add repo-specific patterns in the dedicated section at the bottom.
+# CUSTOM: Logs may be temporarily committed for verification; keep ignored for
+# production use and security.
+
 
 # === Universal (all projects, all languages) ===
 
-# WHY: Logs can be useful during local debugging but are machine-local artifacts.
-# ALT: Remove this ignore temporarily if logs must be inspected.
+# WHY: Logs are useful during debugging and verification.
+# ALT: Uncomment temporarily if logs must be inspected or validated.
 *.log
 logs/
+PRIVATE_NOTES.md
+PRIVATE-NOTES.md
 
-# WHY: Temporary, backup, and swap files are machine-local noise.
+# WHY: Temporary and swap files are machine-local noise and create meaningless diffs.
 *.swo
 *.swp
 *.tmp
 *~
-*.bak
-*.backup
-
-# WHY: Generic caches are machine-local and should not be tracked.
-.cache/
-
-# WHY: OS-generated metadata files should never be tracked.
-$RECYCLE.BIN/
-.AppleDouble
-.DS_Store
-.LSOverride
-.Spotlight-V100/
-.Trashes
-._*
-Icon\r
-desktop.ini
-Desktop.ini
-ehthumbs.db
-Thumbs.db
-
-# WHY: IDE/editor metadata is machine-local and should not be tracked.
-.idea/
-*.code-workspace
-.history/
 
 # === VS Code (special case) ===
 
 # WHY: Ignore editor state while allowing a shared baseline configuration.
-.vscode/*
+.vscode/
+
+# WHY: Commit recommended extensions (opt-in) for consistent development experience.
+# NOTE: Share recommendations, not personal editor styles or preferences.
 !.vscode/extensions.json
-# ALT: Commit .vscode/settings.json only if essential and not user-specific.
-# !.vscode/settings.json
-# ALT: Commit .vscode/tasks.json only if tasks are essential and not user-specific.
-# !.vscode/tasks.json
+!.vscode/settings.json
+
+# === OS-specific files (macOS / Windows) ===
+
+# WHY: OS-generated metadata files should never be tracked.
+.AppleDouble
+.DS_Store
+.LSOverride
+Icon\r
+._*
+.Spotlight-V100/
+.Trashes
+desktop.ini
+ehthumbs.db
+Thumbs.db
+
+# === Editors / IDEs (non-VS Code) ===
+
+# WHY: IDE metadata is machine-local and should not be tracked.
+*.code-workspace
+.idea/
 
 # === Environment variables and secrets ===
 
@@ -57,61 +61,53 @@ Thumbs.db
 .env.*
 *.env
 
-# === Documentation / site build output ===
+# === Documentation build output ===
 
 # WHY: Static site build output is generated.
 site/
 
-# === LaTeX papers ===
+# === Generic caches ===
 
-# WHY: LaTeX build artifacts - regenerated on each compile
-*.aux              # Cross-references
-*.bbl              # Bibliography
-*.bcf              # Biblatex control
-*.blg              # Bibliography log
-*.fdb_latexmk      # latexmk database
-*.fls              # File list
-*.lol              # List of listings
-*.log              # Compilation log
-*.nav              # Beamer navigation
-*.out              # PDF bookmarks
-*.run.xml          # Biblatex run
-*.snm              # Beamer notes
-*.synctex.gz       # Editor sync data
-*.toc              # Table of contents
-*.vrb              # Beamer verbatim
-*.xml              # Biblatex metadata
-.latexmkrc         # latexmk configuration
+# WHY: Generic caches are machine-local and should not be tracked.
+.cache/
 
-# WHY: Build directory and intermediate PDFs
+# === Python ===
+
+# WHY: Virtual environments are machine-local and reproducible.
+.venv/
+venv/
+
+# REQ.PYTHON: Do NOT git ignore uv.lock. Commit it and use it in CI/CD pipelines.
+
+# WHY: Python version when using scm
+src/datafun_toolkit/_version.py
+
+# WHY: Python bytecode is generated.
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# WHY: Build and packaging artifacts are generated.
+.eggs/
 build/
-build_annotated/
-*.pdf
+dist/
+*.egg
+*.egg-info/
+*.whl
 
-# WHY: Reference PDFs - available elsewhere, not redistributed here
-# OBS: Helps locate sources without republishing copyrighted material
-# CUSTOM: Update paths if reference locations change
-references/
+# WHY: Tooling caches should not be tracked.
+.coverage
+.coverage.*
+.mypy_cache/
+.pytest_cache/
+.pytype/
+.ruff_cache/
+.tox/
 
-# === Lean 4 ===
-/.lake/
-/build/
-*.olean
-*.ilean
-*.trace
-lake-packages/
+# WHY: Notebook checkpoint state is generated.
+.ipynb_checkpoints/
 
-# === Coq ===
-*.vo
-*.vok
-*.vos
-*.glob
-.coq-native/
-
-# === Other ===
-
-# WHY: Personal notes and scratch work not intended for publication
-PRIVATE_NOTES.md
 
 # === Project-Specific ===
 # WHY: Include key PDF in the repository root

@@ -31,12 +31,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6 # OBS: v6 current as of Dec 2025
+      - name: A1) Checkout repository code
+        # WHY: Needed to access files for checks.
+        uses: actions/checkout@v6
 
       # WHY: Install TeX Live in CI in a maintainable way
       # OBS: This action installs tlmgr, but does not install TeX packages unless specified
-      - name: Setup TeX Live
+      - name: A2) Setup TeX Live
         uses: TeX-Live/setup-texlive-action@v3
         with:
           # WHY: At minimum, install a scheme so pdflatex/latexmk exist
@@ -45,7 +46,7 @@ jobs:
           package-file: .github/tl_packages
           cache: true
 
-      - name: Confirm TeX binaries available
+      - name: A3) Confirm TeX binaries available
         run: |
           set -e
           which pdflatex
@@ -56,7 +57,7 @@ jobs:
 
       # WHY: Validate LaTeX compiles without errors so ready for arXiv prep
       # OBS: PDF is built but not saved as artifact
-      - name: Build PDF to validate LaTeX
+      - name: A4) Build PDF to validate LaTeX
         run: |
           mkdir -p artifacts
           latexmk -pdf -bibtex -interaction=nonstopmode -halt-on-error \

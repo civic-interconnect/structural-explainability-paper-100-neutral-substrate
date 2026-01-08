@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: se100_the_ontological_neutrality_theorem_annotated.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: plainnat.bst
+Reallocating 'name_of_file' (item size: 1) to 26 items.
+Database file #1: bibliography/bibliography.bib
+You've used 36 entries,
+            2773 wiz_defined-function locations,
+            786 strings with 9905 characters,
+and the built_in function-call counts, 14807 in all, are:
+= -- 1292
+> -- 755
+< -- 27
++ -- 265
+- -- 228
+* -- 1116
+:= -- 2321
+add.period$ -- 116
+call.type$ -- 36
+change.case$ -- 171
+chr.to.int$ -- 35
+cite$ -- 72
+duplicate$ -- 749
+empty$ -- 1320
+format.name$ -- 278
+if$ -- 3093
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 47
+newline$ -- 194
+num.names$ -- 145
+pop$ -- 385
+preamble$ -- 1
+purify$ -- 146
+quote$ -- 0
+skip$ -- 524
+stack$ -- 0
+substring$ -- 476
+swap$ -- 53
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 331
+warning$ -- 0
+while$ -- 143
+width$ -- 0
+write$ -- 483

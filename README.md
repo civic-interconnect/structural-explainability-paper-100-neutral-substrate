@@ -60,4 +60,8 @@ See [CITATION.cff](./CITATION.cff).
 
 ## License
 
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+[CC BY 4.0](./LICENSE)
+
+## SE Manifest
+
+[SE_MANIFEST](./SE_MANIFEST.toml)

@@ -1,0 +1,226 @@
+\begin{thebibliography}{36}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Arp et~al.(2015)Arp, Smith, and Spear]{arp2015bfo}
+Robert Arp, Barry Smith, and Andrew~D. Spear.
+\newblock \emph{Building Ontologies with Basic Formal Ontology}.
+\newblock MIT Press, 2015.
+
+\bibitem[Berman(2007)]{berman2007pluralism}
+Paul~Schiff Berman.
+\newblock Global legal pluralism.
+\newblock \emph{Southern California Law Review}, 80\penalty0 (6):\penalty0
+  1155--1237, 2007.
+
+\bibitem[Borgo et~al.(2022{\natexlab{a}})Borgo, Ferrario, Gangemi, Guarino,
+  Masolo, Porello, Sanfilippo, and Vieu]{borgo2022dolce}
+Stefano Borgo, Roberta Ferrario, Aldo Gangemi, Nicola Guarino, Claudio Masolo,
+  Daniele Porello, Emanuele~M. Sanfilippo, and Laure Vieu.
+\newblock {DOLCE}: A descriptive ontology for linguistic and cognitive
+  engineering.
+\newblock \emph{Applied Ontology}, 17\penalty0 (1):\penalty0 45--69,
+  2022{\natexlab{a}}.
+
+\bibitem[Borgo et~al.(2022{\natexlab{b}})Borgo, Galton, and
+  Kutz]{borgo2022foundational}
+Stefano Borgo, Antony Galton, and Oliver Kutz.
+\newblock Foundational ontologies in action.
+\newblock \emph{Applied Ontology}, 17\penalty0 (1):\penalty0 1--16,
+  2022{\natexlab{b}}.
+\newblock Editorial introducing special issue comparing BFO, DOLCE, GFO, GUM,
+  TUpper, UFO, and YAMATO.
+
+\bibitem[Bovens(2007)]{bovens2007accountability}
+Mark Bovens.
+\newblock Analysing and assessing accountability: A conceptual framework.
+\newblock \emph{European Law Journal}, 13\penalty0 (4):\penalty0 447--468,
+  2007.
+
+\bibitem[Bovens et~al.(2014)Bovens, Goodin, and Schillemans]{bovens2014oxford}
+Mark Bovens, Robert~E. Goodin, and Thomas Schillemans, editors.
+\newblock \emph{The Oxford Handbook of Public Accountability}.
+\newblock Oxford University Press, Oxford, 2014.
+
+\bibitem[Bowker and Star(1999)]{bowker1999sorting}
+Geoffrey~C. Bowker and Susan~Leigh Star.
+\newblock \emph{Sorting Things Out: Classification and Its Consequences}.
+\newblock MIT Press, Cambridge, MA, 1999.
+
+\bibitem[Breuker and Hoekstra(2009)]{breuker2009owl}
+Joost Breuker and Rinke Hoekstra.
+\newblock Epistemology and ontology in core ontologies: Folaw and lri-core, two
+  core ontologies for law.
+\newblock \emph{Artificial Intelligence and Law}, 17\penalty0 (3):\penalty0
+  175--209, 2009.
+
+\bibitem[Cartwright(1979)]{cartwright1979causal}
+Nancy Cartwright.
+\newblock Causal laws and effective strategies.
+\newblock \emph{No{\"u}s}, 13\penalty0 (4):\penalty0 419--437, 1979.
+
+\bibitem[Dworkin(1986)]{dworkin1986law}
+Ronald Dworkin.
+\newblock \emph{Law's Empire}.
+\newblock Harvard University Press, Cambridge, MA, 1986.
+
+\bibitem[Floridi(2008)]{floridi2008levels}
+Luciano Floridi.
+\newblock The method of levels of abstraction.
+\newblock \emph{Minds and machines}, 18\penalty0 (3):\penalty0 303--329, 2008.
+\newblock Defines the epistemic observables available to an agent.
+
+\bibitem[Floridi(2011)]{floridi2011philosophy}
+Luciano Floridi.
+\newblock \emph{The Philosophy of Information}.
+\newblock Oxford University Press, Oxford, 2011.
+\newblock See Chapter 3 for the distinction between LoA (epistemic) and LoO
+  (ontological hierarchy).
+
+\bibitem[Fox(2007)]{fox2007transparency}
+Jonathan Fox.
+\newblock The uncertain relationship between transparency and accountability.
+\newblock \emph{Development in Practice}, 17\penalty0 (4--5):\penalty0
+  663--671, 2007.
+
+\bibitem[Gruber(1993)]{gruber1993translation}
+Thomas~R. Gruber.
+\newblock A translation approach to portable ontology specifications.
+\newblock \emph{Knowledge Acquisition}, 5\penalty0 (2):\penalty0 199--220,
+  1993.
+
+\bibitem[Guarino et~al.(2009)Guarino, Oberle, and Staab]{guarino2009ontology}
+Nicola Guarino, Daniel Oberle, and Steffen Staab.
+\newblock What is an ontology?
+\newblock In \emph{Handbook on Ontologies}, pages 1--17. Springer, 2009.
+
+\bibitem[Hacking(1999)]{hacking1999social}
+Ian Hacking.
+\newblock \emph{The Social Construction of What?}
+\newblock Harvard University Press, Cambridge, MA, 1999.
+
+\bibitem[Hart(1961)]{hart1961concept}
+H.~L.~A. Hart.
+\newblock \emph{The Concept of Law}.
+\newblock Oxford University Press, Oxford, 1961.
+
+\bibitem[Hoekstra et~al.(2007)Hoekstra, Breuker, Di~Bello, and
+  Boer]{hoekstra2007lkif}
+Rinke Hoekstra, Joost Breuker, Marcello Di~Bello, and Alexander Boer.
+\newblock The lkif core ontology of basic legal concepts.
+\newblock In \emph{Proceedings of the Workshop on Legal Ontologies and
+  Artificial Intelligence Techniques}, 2007.
+
+\bibitem[Hood(2011)]{hood2011blame}
+Christopher Hood.
+\newblock \emph{The Blame Game: Spin, Bureaucracy, and Self-Preservation in
+  Government}.
+\newblock Princeton University Press, Princeton, NJ, 2011.
+
+\bibitem[{International Organization for Standardization} and {International
+  Electrotechnical Commission}(2021)]{iso2021bfo}
+{International Organization for Standardization} and {International
+  Electrotechnical Commission}.
+\newblock Information technology — top-level ontologies (tlo) — part 2:
+  Basic formal ontology (bfo), 2021.
+\newblock Standardizes BFO-2020.
+
+\bibitem[Joachimiak et~al.(2025)Joachimiak, Miller, Caufield, Ly, Bouchard,
+  et~al.]{joachimiak2025aio}
+Marcin~P. Joachimiak, Mark~A. Miller, J.~Harry Caufield, Ryan Ly, Kristofer~E.
+  Bouchard, et~al.
+\newblock The artificial intelligence ontology: Llm-assisted construction of ai
+  concept hierarchies.
+\newblock \emph{Applied Ontology}, 2025.
+\newblock First published online March 2, 2025.
+
+\bibitem[Kassel(2023)]{kassel2023epistemic}
+Gilles Kassel.
+\newblock A plea for epistemic ontologies.
+\newblock \emph{Applied Ontology}, 18\penalty0 (4):\penalty0 367--397, 2023.
+
+\bibitem[Köhler and Neuhaus(2025)]{kohler2025mercurial}
+Nele Köhler and Fabian Neuhaus.
+\newblock The mercurial top-level ontology of large language models.
+\newblock \emph{Applied Ontology}, 20\penalty0 (1):\penalty0 5--15, 2025.
+\newblock \doi{10.1177/15705838251336685}.
+
+\bibitem[Masolo et~al.(2003)Masolo, Borgo, Gangemi, Guarino, and
+  Oltramari]{masolo2003dolce}
+Claudio Masolo, Stefano Borgo, Aldo Gangemi, Nicola Guarino, and Alessandro
+  Oltramari.
+\newblock Wonderweb deliverable d18: Ontology library.
+\newblock \emph{IST Project 2001-33052 WonderWeb}, 2003.
+
+\bibitem[Masolo et~al.(2025)Masolo, Compagno, and Borgo]{masolo2025alignment}
+Claudio Masolo, Francesco Compagno, and Stefano Borgo.
+\newblock On the formal alignment of foundational ontologies: Building mappings
+  between {Basic Formal Ontology} and {Descriptive Ontology for Linguistic and
+  Cognitive Engineering}.
+\newblock \emph{Applied Ontology}, 20, 2025.
+
+\bibitem[Neuhaus and Hastings(2022)]{neuhaus2022consensus}
+Fabian Neuhaus and Janna Hastings.
+\newblock Ontology development is consensus creation, not (merely)
+  representation.
+\newblock \emph{Applied Ontology}, 2022.
+\newblock arXiv:2210.12026.
+
+\bibitem[Pearl(2009)]{pearl2009causality}
+Judea Pearl.
+\newblock \emph{Causality: Models, Reasoning, and Inference}.
+\newblock Cambridge University Press, 2 edition, 2009.
+
+\bibitem[Rawls(1993)]{rawls1993political}
+John Rawls.
+\newblock \emph{Political Liberalism}.
+\newblock Columbia University Press, New York, 1993.
+
+\bibitem[Sartor et~al.(2011)Sartor, Casanovas, et~al.]{sartor2011legal}
+Giovanni Sartor, Pompeu Casanovas, et~al.
+\newblock Legislative xml and ontologies in legal drafting.
+\newblock In \emph{Approaches to Legal Ontologies}, pages 239--261. Springer,
+  2011.
+
+\bibitem[Smith and Ceusters(2010)]{smith2010ontology}
+Barry Smith and Werner Ceusters.
+\newblock Ontology as realist representation.
+\newblock \emph{Applied Ontology}, 5\penalty0 (2):\penalty0 139--188, 2010.
+
+\bibitem[Spirtes et~al.(2000)Spirtes, Glymour, and
+  Scheines]{spirtes2000causation}
+Peter Spirtes, Clark Glymour, and Richard Scheines.
+\newblock \emph{Causation, Prediction, and Search}.
+\newblock MIT Press, 2nd edition, 2000.
+
+\bibitem[Star(1989)]{star1989institutional}
+Susan~Leigh Star.
+\newblock The institutional ecology of infrastructure.
+\newblock \emph{Social Studies of Science}, 19\penalty0 (3):\penalty0 327--364,
+  1989.
+
+\bibitem[Star and Ruhleder(1996)]{star1996ecology}
+Susan~Leigh Star and Karen Ruhleder.
+\newblock Steps toward an ecology of infrastructure.
+\newblock \emph{Information Systems Research}, 7\penalty0 (1):\penalty0
+  111--134, 1996.
+
+\bibitem[Sunstein(1996)]{sunstein1996legal}
+Cass~R. Sunstein.
+\newblock \emph{Legal Reasoning and Political Conflict}.
+\newblock Oxford University Press, Oxford, 1996.
+
+\bibitem[Winner(1980)]{winner1980artifacts}
+Langdon Winner.
+\newblock Do artifacts have politics?
+\newblock \emph{Daedalus}, 109\penalty0 (1):\penalty0 121--136, 1980.
+
+\bibitem[Woodward(2003)]{woodward2003making}
+James Woodward.
+\newblock \emph{Making Things Happen: A Theory of Causal Explanation}.
+\newblock Oxford University Press, Oxford, 2003.
+
+\end{thebibliography}

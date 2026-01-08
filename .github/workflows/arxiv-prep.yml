@@ -13,18 +13,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6 # OBS: v6 current as of Dec 2025
+      - name: A1)Checkout repository code
+        # WHY: Needed to access files for checks.
+        uses: actions/checkout@v6
 
       # WHY: Install TeX Live in CI in a maintainable way
       # OBS: This action installs tlmgr, but does not install TeX packages unless specified
-      - name: Setup TeX Live
+      - name: A2) Setup TeX Live
         uses: TeX-Live/setup-texlive-action@v3
         with:
           package-file: .github/tl_packages
           cache: true
 
-      - name: Confirm TeX binaries available
+      - name: A3) Confirm TeX binaries available
         run: |
           set -e
           kpsewhich authblk.sty
@@ -34,7 +35,7 @@ jobs:
           latexmk --version
 
       # WHY: Create clean staging area with only files arXiv needs
-      - name: Create staging directory
+      - name: A4) Create staging directory
         run: |
           mkdir -p arxiv_src
 
@@ -53,7 +54,7 @@ jobs:
           fi
 
       # WHY: arXiv builds from source - doesn't need build artifacts
-      - name: Clean auxiliary files
+      - name: A5) Clean auxiliary files
         working-directory: arxiv_src
         run: |
           # WHY: Remove LaTeX auxiliary files from local builds
@@ -65,22 +66,22 @@ jobs:
           \) -delete
 
       # WHY: arXiv requires submission as zip file
-      - name: Create arXiv source zip
+      - name: A6) Create arXiv source zip
         run: |
           cd arxiv_src
           zip -r ../arxiv-source.zip .
 
       # WHY: Download this artifact to upload to arxiv.org
       # OBS: Artifact available for download from Actions tab after workflow runs
-      - name: Upload arXiv source artifact
-        uses: actions/upload-artifact@v6 # OBS: v6 current as of Dec 2025
+      - name: A7) Upload arXiv source artifact
+        uses: actions/upload-artifact@v6
         with:
           name: arxiv-source
           path: arxiv-source.zip
           if-no-files-found: error # WHY: Fail if packaging didn't work
 
       # WHY: Debugging step to verify contents of staging area
-      - name: Debug list files
+      - name: A8) Debug list files
         shell: bash
         run: |
           set -e
@@ -98,8 +99,8 @@ jobs:
       # WHY: Provide a compiled PDF for manual verification before arXiv submission
       # OBS: This PDF is NOT included in the arXiv source zip
       # OBS: Allows manual confirmation that the staged bundle compiles as expected
-      - name: Upload compiled PDF (CI check)
-        uses: actions/upload-artifact@v6 # OBS: v6 current as of Dec 2025
+      - name: A9) Upload compiled PDF (CI check)
+        uses: actions/upload-artifact@v6
         with:
           name: compiled-pdf
           path: ./*.pdf

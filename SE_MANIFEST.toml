@@ -1,4 +1,17 @@
+# ============================================================
+# SE_MANIFEST.toml (Repository Intent, Scope, and Role)
+# ============================================================
+
 schema = "se-manifest-1"
+schema_url = "https://github.com/structural-explainability/spec-se/blob/main/manifests/se-manifest-1.md"
+
+[meta]
+# Non-normative contextual information
+framework = "Structural Explainability"
+framework_url = "https://github.com/structural-explainability"
+framework_note = "Provides definitions and conventions for SE_MANIFEST semantics."
+description = "Declarative claim of repository intent, scope, and role."
+purpose = "To make explicit the boundaries, responsibilities, and expectations of this repository relative to others."
 
 [repo]
 name = "se100_the_ontological_neutrality_theorem"

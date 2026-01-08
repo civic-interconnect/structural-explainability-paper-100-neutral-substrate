@@ -1,67 +1,100 @@
-# REQ.PROJECT: This repository SHOULD include a .pre-commit-config.yaml when quality gates are required.# REQ: Any check that can be run locally MUST be available here.# WHY: Provide fast, consistent local checks aligned with upstream quality gates.# WHY: Keep local checks compatible with repository-wide formatting rules.# OBS: Formatting baselines are defined in#      .editorconfig (whitespace/indentation) and#      .gitattributes (EOL normalization).# OBS: These hooks do not override .editorconfig or .gitattributes;#      they only prevent common diff noise and validate repository metadata.# ALT: Checks that are inherently non-local are handled upstream.# CUSTOM: Keep the hook set minimal and non-destructive for normative Markdown specs.## OPTIONAL LOCAL USAGE (no repo venv required):#   Install uv (once, user-level).#   uv self update#   uvx pre-commit install#   uvx pre-commit run --all-files## OBS: If a hook reports "files were modified", re-run last command to confirm a clean pass.## NOTE: pre-commit is optional.#       Repositories do not require Python, uv, or pre-commit to clone or commit.exclude: |  (?x)^(    \.DS_Store|    \.ipynb_checkpoints/|    \.mypy_cache/|    \.pytest_cache/|    \.ruff_cache/|    \.tox/|    \.venv/|    build/|    dist/|    node_modules/|    site/  )repos:  - repo: https://github.com/pre-commit/pre-commit-hooks    rev: v6.0.0 # OBS: v6 current as of Dec 30 2025    hooks:      - id: check-added-large-files # OBS: prevent large binary files      - id: trailing-whitespace # OBS: clean trailing whitespace per .editorconfig      - id: end-of-file-fixer # OBS: ensure files end with a newline per .gitattributes      - id: check-merge-conflict # OBS: prevent committing unresolved merge conflicts        # WHY: Workflow files may intentionally include marker-like strings (e.g., >>>>).        exclude: ^\.github/workflows/.*\.(yml|yaml)$      - id: check-yaml # OBS: validate YAML syntax        files: \.(yml|yaml)$  - repo: https://github.com/adrienverge/yamllint    rev: v1.37.1 # OBS: pinned for reproducibility    hooks:      - id: yamllint # OBS: validate YAML structure and policy (no line-length enforcement)        args: [-c, .yamllint.yml]        files: \.(yml|yaml)$  - repo: https://github.com/rhysd/actionlint    rev: v1.7.10 # OBS: v1.7.10 current as of Dec 30 2025    hooks:      - id: actionlint # OBS: validate GitHub Actions workflow syntax        files: ^\.github/workflows/.*\.(yml|yaml)$# REQ.PROJECT: This repository SHOULD include a .pre-commit-config.yaml when quality gates are required.
-# REQ: Any check that can be run locally MUST be available here.
-# WHY: Provide fast, consistent local checks aligned with upstream quality gates.
-# WHY: Keep local checks compatible with repository-wide formatting rules.
-# OBS: Formatting baselines are defined in
-#      .editorconfig (whitespace/indentation) and
-#      .gitattributes (EOL normalization).
-# OBS: These hooks do not override .editorconfig or .gitattributes;
-#      they only prevent common diff noise and validate repository metadata.
-# ALT: Checks that are inherently non-local are handled upstream.
-# CUSTOM: Keep the hook set minimal and non-destructive for normative Markdown specs.
+# ============================================================
+# .pre-commit-config.yaml (LaTeX Hygiene)
+# ============================================================
+# VARIANT: latex-hygiene
+# SOURCE: https://github.com/denisecase/templates
+#
+# REQ: Documentation-only repos MAY include a .pre-commit-config.yaml for repo hygiene (optional).
+# WHY: Keep LaTeX diffs clean across OSes and prevent common documentation commit errors.
+#
+# OBS: These hooks use and do NOT override:
+#   - .editorconfig (whitespace / indentation)
+#   - .gitattributes (EOL normalization)
 #
 # OPTIONAL LOCAL USAGE (no repo venv required):
 #   Install uv (once, user-level).
 #   uv self update
 #   uvx pre-commit install
-#   uvx pre-commit run --all-files
-#
-# OBS: If a hook reports "files were modified", re-run last command to confirm a clean pass.
+#   uvx pre-commit run --all-files (just once, to check all files)
+# Subsequent commits will AUTOMATICALLY run pre-commit hooks after git add
+# and before git commit.
 #
 # NOTE: pre-commit is optional.
-#       Repositories do not require Python, uv, or pre-commit to clone or commit.
+#   Repositories do NOT require Python, uv, or pre-commit to clone or commit.
 
 exclude: |
   (?x)^(
     \.DS_Store|
+    \.coverage|
     \.ipynb_checkpoints/|
     \.mypy_cache/|
+    \.nox/|
     \.pytest_cache/|
     \.ruff_cache/|
     \.tox/|
     \.venv/|
+    .*\.(egg-info)/|
+    .*\.log|
+    __pycache__/|
+    _minted.*/|
     build/|
+    coverage\.xml|
     dist/|
+    htmlcov/|
+    lake-packages/|
     node_modules/|
+    out/|
     site/
   )
 
 repos:
+  # === REPO: PRE-COMMIT HOOKS (cross-platform, zero config) ===
+  #
+  # These hooks prevent problems that show up later as:
+  #   - mysterious diffs
+  #   - broken builds on another OS
+
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
-      - id: check-added-large-files # OBS: prevent large binary files
-      - id: trailing-whitespace # OBS: clean trailing whitespace per .editorconfig
-      - id: end-of-file-fixer # OBS: ensure files end with a newline per .gitattributes
+      # === PRE-COMMIT: NORMALIZE FILE FORMATTING ===
 
-      - id: mixed-line-ending # OBS: normalize line endings before linters run
-        # WHY: yamllint enforces LF; Windows working copies may be CRLF.
-        args: [--fix=lf]
+      - id: trailing-whitespace
+        name: A1) Clean trailing whitespace (per .editorconfig)
+        args: [--markdown-linebreak-ext=md] # Preserves markdown double-space line breaks
 
-      - id: check-merge-conflict # OBS: prevent committing unresolved merge conflicts
+      - id: end-of-file-fixer
+        name: A2) End files with a newline (per .gitattributes)
 
-      - id: check-yaml # OBS: validate YAML syntax
+      - id: mixed-line-ending
+        name: A3) Normalize line endings to LF before linters
+        args: [--fix=lf] # OBS: Windows working copies may be CRLF.
+
+      #  === PRE-COMMIT: CHECK DATA FILE FORMATS ===
+
+      - id: check-json
+        name: B1) Validate JSON syntax
+
+      - id: check-toml
+        name: B2) Validate TOML syntax
+
+      - id: check-yaml
+        name: B3) Validate YAML syntax
         files: \.(yml|yaml)$
+        exclude: ^mkdocs\.ya?ml$ # OBS: mkdocs.yaml may include non-standard tags.
 
-  - repo: https://github.com/adrienverge/yamllint
-    rev: v1.37.1
-    hooks:
-      - id: yamllint # OBS: validate YAML structure and policy (no line-length enforcement)
-        args: [-c, .yamllint.yml]
-        files: \.(yml|yaml)$
+      # === PRE-COMMIT:CHECK FOR COMMON PROBLEMS ===
 
-  - repo: https://github.com/rhysd/actionlint
-    rev: v1.7.10
-    hooks:
-      - id: actionlint # OBS: validate GitHub Actions workflow syntax
-        files: ^\.github/workflows/.*\.(yml|yaml)$
+      - id: check-added-large-files
+        name: C1) Prevent accidental commits of large binaries
+        args: [--maxkb=500]
+
+      - id: check-merge-conflict
+        name: C2) Prevent committing merge conflicts
+
+      - id: check-case-conflict
+        name: C3) Check for filename case conflicts
+
+# === GLOBAL SETTINGS ===
+# ALT: Set fail_fast to true to stop at first failure.
+fail_fast: false # Run all hooks even if one fails

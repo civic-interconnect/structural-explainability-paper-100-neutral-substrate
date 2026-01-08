@@ -1,4 +1,14 @@
-cff-version: 1.2.0
+# ============================================================
+# CITATION.cff (How to cite this project)
+# ============================================================
+
+# REQ.UNIVERSAL: Professional open projects SHOULD include CITATION.cff.
+# WHY: Support correct citation and attribution.
+# ALT: Internal or private repositories may omit citation metadata.
+# CUSTOM: Update author, repository, license, and keyword fields as needed.
+# USAGE: See https://citation-file-format.github.io/ for details.
+
+cff-version: "1.2.0"
 type: article
 
 title: "The Ontological Neutrality Theorem: Why Neutral Ontological Substrates Must Be Pre-Causal and Pre-Normative"
@@ -9,9 +19,10 @@ authors:
   - family-names: Case
     given-names: Denise M.
     orcid: https://orcid.org/0000-0001-6165-7389
-    affiliation: "Northwest Missouri State University; Civic Interconnect"
+    affiliation: "Northwest Missouri State University, School of Computer Science and Information Systems, Maryville, MO, USA"
 
-repository-code: https://github.com/structural-explainability/structural-explainability-paper-100-neutral-substrate
+repository-code: "https://github.com/structural-explainability/structural-explainability-paper-100-neutral-substrate"
+url: "https://github.com/structural-explainability/structural-explainability-paper-100-neutral-substrate"
 license: CC-BY-4.0
 
 abstract: >
@@ -31,4 +42,4 @@ keywords:
   - normative commitment
   - structural explainability
 
-message: "If using this software, please cite it as described in this file."
+message: "If using this work, please cite it as described in this file."

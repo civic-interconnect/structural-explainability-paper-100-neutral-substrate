@@ -1,3 +1,8 @@
+# ============================================================
+# .github/workflows/links.yml (Lychee Link Checker)
+# ============================================================
+# SOURCE: https://github.com/denisecase/templates
+#
 # WHY-FILE: Automated link checking.
 # OBS: Behavior is configured in lychee.toml in this repository.
 # OBS: Runs on pull requests and monthly on schedule; manual trigger always available.
@@ -6,9 +11,7 @@ name: Check Links
 
 on:
   workflow_dispatch: # WHY: Manual trigger - always available
-
   pull_request: # WHY: Validates PR links before merge
-
   schedule:
     - cron: "0 6 1 * *" # WHY: Runs monthly (1st of month)
 
@@ -17,22 +20,31 @@ concurrency:
   group: link-check-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read # WHY: Needed to checkout code.
+  issues: write # WHY: Needed to create issue on scheduled failures.
+  pull-requests: write # WHY: Needed to comment on PR if links broken.
+
+env:
+  PYTHONUNBUFFERED: "1" # WHY: Real-time logging.
+  PYTHONIOENCODING: "utf-8" # WHY: Ensure UTF-8 encoding for international characters.
+  REPORT_FAILURES: "true" # WHY: Enable PR comments and scheduled issues for link failures.
+
 jobs:
   lychee:
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      issues: write
-      pull-requests: write
+    name: Link checks
+    runs-on: ubuntu-latest # WHY: Linux environment matches most production deployments
+    timeout-minutes: 20 # WHY: Prevent hanging jobs. If over time, likely stuck.
 
     steps:
       - name: 1) Checkout repository code
-        uses: actions/checkout@v6 # OBS: v6 current as of Dec 2025
+        uses: actions/checkout@v6
 
       - name: 2) Check links with Lychee
-        uses: lycheeverse/lychee-action@v2
+        id: lychee
+        uses: lycheeverse/lychee-action@v2.7.0
         with:
+          fail: true # WHY: Fail the step if broken links found
           args: >
             --config lychee.toml
             --user-agent "${{ github.repository }}/lychee"
@@ -42,12 +54,11 @@ jobs:
             './**/*.tex'
             './**/*.yml'
             './**/*.yaml'
-          lycheeVersion: latest # OBS: Always use latest lychee release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 3) Comment on PR if links broken
-        if: failure() && github.event_name == 'pull_request'
+        if: failure() && github.event_name == 'pull_request' && env.REPORT_FAILURES == 'true'
         uses: actions/github-script@v8
         with:
           script: |
@@ -65,30 +76,32 @@ jobs:
               body: comment,
             });
 
-      - name: 4) Create issue for scheduled failures # WHY: Track broken links found during scheduled checks
-        # OBS: Only creates issue if none already open with 'broken-links' label
-        if: failure() && github.event_name == 'schedule'
+      - name: 4) Create issue for scheduled failures
+        # WHY: Track broken links found during scheduled checks
+        # OBS: Only creates issue if no open issue from github-actions bot exists
+        if: failure() && github.event_name == 'schedule' && env.REPORT_FAILURES == 'true'
         uses: actions/github-script@v8
         with:
           script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
             const date = new Date().toISOString().split("T")[0];
             const title = `Link Check Failed - ${date}`;
             const runUrl = `${context.payload.repository.html_url}/actions/runs/${context.runId}`;
             const body = `Monthly link check found broken links.\n\nWorkflow logs: ${runUrl}`;
 
             const existing = await github.rest.issues.listForRepo({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              labels: "broken-links",
+              owner: owner,
+              repo: repo,
               state: "open",
+              creator: "github-actions[bot]",
+              per_page: 1,
             });
 
-            if (existing.data.length === 0) {
-              await github.rest.issues.create({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                title,
-                body,
-                labels: ["maintenance", "broken-links"],
-              });
+            const alreadyOpen = existing.data.some(
+              (i) => typeof i.title === "string" && i.title.startsWith("Link Check Failed -")
+            );
+
+            if (!alreadyOpen) {
+              await github.rest.issues.create({ owner, repo, title, body });
             }

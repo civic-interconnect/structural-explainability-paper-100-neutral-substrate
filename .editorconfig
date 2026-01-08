@@ -1,3 +1,7 @@
+# ============================================================
+# .editorconfig (Keep files consistent across editors and IDEs)
+# ============================================================
+
 # REQ.UNIVERSAL: All professional GitHub project repositories MUST include .editorconfig.
 # WHY: Establish a cross-editor baseline so diffs stay clean and formatting is consistent.
 # ALT: Repository may omit .editorconfig ONLY if formatting is enforced equivalently by CI and formatter tooling.
@@ -5,7 +9,6 @@
 # NOTE: Sections are ordered by editorial importance, not strict alphabetical order.
 # EditorConfig is documented at https://editorconfig.org
 
-[*.{editorconfig}]
 root = true
 
 # === Global defaults (always apply) ===

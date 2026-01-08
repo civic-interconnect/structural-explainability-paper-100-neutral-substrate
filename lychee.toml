@@ -1,14 +1,15 @@
+# ============================================================
+# lychee.toml (Lychee link checker configuration)
+# ============================================================
+
+# REQ.PROJECT: Automatic link checking using GitHub Actions and Lychee.
 # WHY-FILE: Shared Lychee configuration (lychee.toml) for documentation-heavy repositories.
-# REQ.PROJECT: Link checking MUST be non-flaky and CI-safe.
+# REQ: Link checking MUST be reliable and CI-safe.
 # WHY: Configures Lychee link checker behavior for CI/CD.
 # OBS: Flat structure required by lychee v0.22+; no nested sections.
 # OBS: No path exclusions; all documentation files are expected to be link-clean.
-# OBS: Link integrity supports Structural Explainability (SE)
-#      by preserving stable, reconstructible references over time.
-# OBS: Link integrity also benefits Contextual Evidence & Explanations (CEE)
-#      by maintaining the availability of cited evidence and provenance,
-#      without enforcing interpretation.
-
+# OBS: Link integrity preserves stable, reconstructible references over time.
+# OBS: Link integrity maintains connections to external resources.
 
 # WHY: Control verbosity and CI-friendly output
 verbose = "info"   # WHY: Balance between detail and noise

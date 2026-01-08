@@ -31,6 +31,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # ============================================================
+      # ASSEMBLE: Get code and set up environment
+      # ============================================================
+
       - name: A1) Checkout repository code
         # WHY: Needed to access files for checks.
         uses: actions/checkout@v6
@@ -55,9 +59,13 @@ jobs:
           latexmk --version
           kpsewhich authblk.sty
 
+      # ============================================================
+      # === DEPLOY: Build only, don't deploy yet ===
+      # ============================================================
+
       # WHY: Validate LaTeX compiles without errors so ready for arXiv prep
       # OBS: PDF is built but not saved as artifact
-      - name: A4) Build PDF to validate LaTeX
+      - name: D1) Build PDF to validate LaTeX
         run: |
           mkdir -p artifacts
           latexmk -pdf -bibtex -interaction=nonstopmode -halt-on-error \

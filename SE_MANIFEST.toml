@@ -19,7 +19,7 @@ org  = "structural-explainability"
 kind = "paper"
 status = "explanatory"
 since = "2025"
-summary = "Applied Ontology paper establishing neutrality constraints for shared substrates."
+summary = "Applied ontology paper establishing neutrality constraints for shared substrates."
 
 [layer]
 space = "SE"
@@ -30,7 +30,14 @@ required = []
 optional = []
 
 [provides]
-artifacts = ["README.md", "paper/*.tex", "CITATION.cff"]
+artifacts = [
+    "ANNOTATIONS.md",
+    "CITATION.cff",
+    "LICENSE",
+    "README.md",
+    "SE_MANIFEST.toml",
+    "paper/*.tex"
+]
 
 [scope]
 includes = [

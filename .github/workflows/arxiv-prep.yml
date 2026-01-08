@@ -13,7 +13,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: A1)Checkout repository code
+      # ============================================================
+      # ASSEMBLE: Get code and set up environment
+      # ============================================================
+
+      - name: A1) Checkout repository code
         # WHY: Needed to access files for checks.
         uses: actions/checkout@v6
 
@@ -34,8 +38,12 @@ jobs:
           which latexmk
           latexmk --version
 
+      # ============================================================
+      # === DEPLOY: Build and deploy ===
+      # ============================================================
+
       # WHY: Create clean staging area with only files arXiv needs
-      - name: A4) Create staging directory
+      - name: D1) Create staging directory
         run: |
           mkdir -p arxiv_src
 
@@ -54,7 +62,7 @@ jobs:
           fi
 
       # WHY: arXiv builds from source - doesn't need build artifacts
-      - name: A5) Clean auxiliary files
+      - name: D2) Clean auxiliary files
         working-directory: arxiv_src
         run: |
           # WHY: Remove LaTeX auxiliary files from local builds
@@ -66,14 +74,14 @@ jobs:
           \) -delete
 
       # WHY: arXiv requires submission as zip file
-      - name: A6) Create arXiv source zip
+      - name: D3) Create arXiv source zip
         run: |
           cd arxiv_src
           zip -r ../arxiv-source.zip .
 
       # WHY: Download this artifact to upload to arxiv.org
       # OBS: Artifact available for download from Actions tab after workflow runs
-      - name: A7) Upload arXiv source artifact
+      - name: D4) Upload arXiv source artifact
         uses: actions/upload-artifact@v6
         with:
           name: arxiv-source
@@ -81,7 +89,7 @@ jobs:
           if-no-files-found: error # WHY: Fail if packaging didn't work
 
       # WHY: Debugging step to verify contents of staging area
-      - name: A8) Debug list files
+      - name: D5) Debug list files
         shell: bash
         run: |
           set -e
@@ -95,11 +103,10 @@ jobs:
           echo "Find PDFs:"
           find . -type f -name "*.pdf" -print
 
-
       # WHY: Provide a compiled PDF for manual verification before arXiv submission
       # OBS: This PDF is NOT included in the arXiv source zip
       # OBS: Allows manual confirmation that the staged bundle compiles as expected
-      - name: A9) Upload compiled PDF (CI check)
+      - name: D6) Upload compiled PDF (CI check)
         uses: actions/upload-artifact@v6
         with:
           name: compiled-pdf

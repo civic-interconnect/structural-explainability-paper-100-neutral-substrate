@@ -21,8 +21,8 @@ authors:
     orcid: https://orcid.org/0000-0001-6165-7389
     affiliation: "Northwest Missouri State University, School of Computer Science and Information Systems, Maryville, MO, USA"
 
-repository-code: "https://github.com/structural-explainability/structural-explainability-paper-100-neutral-substrate"
-url: "https://github.com/structural-explainability/structural-explainability-paper-100-neutral-substrate"
+repository-code: "https://github.com/structural-explainability/paper-100-neutral-substrate"
+url: "https://github.com/structural-explainability/paper-100-neutral-substrate"
 license: CC-BY-4.0
 
 abstract: >

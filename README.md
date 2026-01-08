@@ -1,9 +1,9 @@
 # The Ontological Neutrality Theorem
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-blue.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Build PDF](https://github.com/structural-explainability/structural-explainability-paper-100-neutral-substrate/actions/workflows/build-latex.yml/badge.svg)](https://github.com/structural-explainability/structural-explainability-paper-100-neutral-substrate/actions/workflows/build-latex.yml)
-[![Check Links](https://github.com/structural-explainability/structural-explainability-paper-100-neutral-substrate/actions/workflows/links.yml/badge.svg)](https://github.com/structural-explainability/structural-explainability-paper-100-neutral-substrate/actions/workflows/links.yml)
-[![ArXiv Prep](https://github.com/structural-explainability/structural-explainability-paper-100-neutral-substrate/actions/workflows/arxiv-prep.yml/badge.svg)](https://github.com/structural-explainability/structural-explainability-paper-100-neutral-substrate/actions/workflows/arxiv-prep.yml)
+[![Build PDF](https://github.com/structural-explainability/structural-explainability-paper-100-neutral-substrate/actions/workflows/build-latex.yml/badge.svg?branch=main)](https://github.com/structural-explainability/structural-explainability-paper-100-neutral-substrate/actions/workflows/build-latex.yml)
+[![Check Links](https://github.com/structural-explainability/structural-explainability-paper-100-neutral-substrate/actions/workflows/links.yml/badge.svg?branch=main)](https://github.com/structural-explainability/structural-explainability-paper-100-neutral-substrate/actions/workflows/links.yml)
+[![ArXiv Prep](https://github.com/structural-explainability/structural-explainability-paper-100-neutral-substrate/actions/workflows/arxiv-prep.yml/badge.svg?branch=main)](https://github.com/structural-explainability/structural-explainability-paper-100-neutral-substrate/actions/workflows/arxiv-prep.yml)
 
 > This paper derives necessary design constraints for ontological substrates
 > intended to support stable reference under persistent disagreement,
